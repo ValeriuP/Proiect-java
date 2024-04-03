@@ -1,41 +1,28 @@
-const form=document.querySelector("#form");
+const form=document.querySelector("form")
 const email=document.getElementById("email");
 const password = document.getElementById("password");
-const firstName= document.getElementById("first_name");
-const lestName= document.getElementById("last_name");
-const birthDate=document.getElementById("birth_date")
 
 function validateImputs(){
     const emailVal=email.value;
     const passwordVal=password.value;
-    const firstNameVal=firstName.value;
-    const lestNameVal=lestName.value;
-    const birthDataVal=birthDate.value;
-
-    const storedData=JSON.parse(localStorage.getItem("user_1"));
+    const storedData=JSON.parse(localStorage.getItem("users-1"));
     let results=true;
-    
-    if(!storedData.includes(emailVal)){
-       setError(email,"email does not exist");
-       results= false;
+    for (let element of storedData){
+      if (element.email==emailVal && element.password==passwordVal){
+        // am gasit userul care vrea sa se logeze 
+        return true
+      }
     }
-    if(!storedData.includes(passwordVal)){
-        setError(password, "password does not exist");
-        results=false;
-    }
-    // if(!storedData.includes(firstNameVal)){
-    //   setError(firstName,"first name does not exist");
-    //   results=false;
+    return false
+    // if(!storedData.includes(emailVal)){
+    //    setError(email,"email does not exist");
+    //    results= false;
     // }
-    // if(!storedData.includes(lestNameVal)){
-    //   setError(lestName,"lest name does not exist");
-    //   results=false
+    // if(!storedData.includes(passwordVal)){
+    //     setError(password, "password does not exist");
+    //     results=false;
     // }
-    // if(!storedData.includes(birthDataVal)){
-    //   setError(birthDate,"birth data does not exist");
-    //   results=false
-    // }
-    return results;
+    // return results;
 
 }
 
@@ -43,6 +30,11 @@ form.addEventListener("submit", (e)=>{
   e.preventDefault();
   if(validateImputs()){
     window.location.href="home.html"
+  }
+  else {
+    // mesaj eroare si stergem textul din campul din input
+    
+
   }
 })
 function setError(element,message){
