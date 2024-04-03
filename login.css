@@ -3,18 +3,24 @@
     padding: 0;
     box-sizing: border-box;
   }
+  body{
+    background-image:url(Backgrount2.jpg) ;
+    /* height: 100vh;
+    width: 100vw; */
+    /* background: no-repeat; */
+  }
   
   #form{
     width:400px;
     margin:20vh auto 0 auto;
-    background-color: whitesmoke;
+    /* background-color: white; */
     border-radius: 5px;
     padding:30px;
   }
   
   h1{
     text-align: center;
-    color:blue;
+    color:white;
   }
   
   #form button{
@@ -33,6 +39,7 @@
     display:flex;
     flex-direction: column;
     margin-bottom: 15px;
+    
   }
   
   .input-group input{
@@ -40,7 +47,13 @@
     font-size:20px;
     margin-top:5px;
     padding:10px;
-    border:1px solid blue ;
+    border:1px solid red ;
+    /* se face transparent */
+    background-color: rgb(189 211 219 /25%);
+    /* backdrop-filter: blur(5px); */
+  }
+  .input-group input::placeholder{
+    color: #55c5ed;
   }
   
   .input-group input:focus{

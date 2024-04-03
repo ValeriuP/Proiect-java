@@ -1,7 +1,7 @@
 const form=document.querySelector("#form");
 const email=document.getElementById("email");
 const password = document.getElementById("password");
-const f
+// const f
 
 function validateImputs(){
     const emailVal=email.value;
