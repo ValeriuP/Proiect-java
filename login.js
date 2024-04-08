@@ -28,7 +28,13 @@ function validateImputs(){
 
 form.addEventListener("submit", (e)=>{
   e.preventDefault();
+
   if(validateImputs()){
+    let stocareUser=localStorage.setItem("userSave");
+    console.log(stocareUser);
+  
+   
+    
     window.location.href="home.html"
   }
   else {

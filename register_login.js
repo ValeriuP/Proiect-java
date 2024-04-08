@@ -125,6 +125,12 @@ function isValidEmail(email){
 
 
 }
+// functia butonului login
+function login(){
+    window.location.href="login.html"
+}
+
+
 // toster  este pentru alerte eroare
 toastr.options = {
     "closeButton": false,
