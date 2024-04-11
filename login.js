@@ -13,16 +13,9 @@ function validateImputs(){
         return element
       }
     }
-    return false
-    // if(!storedData.includes(emailVal)){
-    //    setError(email,"email does not exist");
-    //    results= false;
-    // }
-    // if(!storedData.includes(passwordVal)){
-    //     setError(password, "password does not exist");
-    //     results=false;
-    // }
-    // return results;
+    setError(password,"password or email is incorrect");
+    return false;
+    
 
 }
 
@@ -41,7 +34,7 @@ form.addEventListener("submit", (e)=>{
   //   // mesaj eroare si stergem textul din campul din input
     
 
-  // }
+  
 })
 function setError(element,message){
     const inputGroup = element.parentElement;

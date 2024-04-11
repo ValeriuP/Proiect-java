@@ -52,7 +52,7 @@ function validImputs(){
     let result=true;
     const emailVal=email.value;
     if(emailVal==""){
-        setError(email,"email is required");
+        setError(email,"email is required",);
         result=false;
         
     }
