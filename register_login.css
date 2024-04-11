@@ -4,10 +4,10 @@
     box-sizing: border-box;
   }
   body{
-    background-image:url(Backgrount2.jpg) ;
-    /* height: 100vh;
-    width: 100vw; */
-    /* background: no-repeat; */
+    background-image:url(Backgrount2.jpg);
+    /* height: 100vh; */
+    width: 100vw;
+    background-image: no-repeat;
   }
   .head-container{
     width: 100vw;
@@ -21,17 +21,18 @@
   }
   
   #form{
-    width:400px;
-    margin:5vh auto 0 auto;
-    /* background-color: white; */
+    width:300px;
+    margin:2vh auto 0 auto;
+    /* background-color:whitesmoke; */
+    backdrop-filter: blur(20px);
     border-radius: 5px;
-    padding:30px;
+    padding: 10px;
   }
   
   h1{
     text-align: center;
     color:white;
-    font-size: 55px;
+    font-size: 35px;
   }
   
   #form button{
@@ -55,13 +56,13 @@
   
   .input-group input{
     border-radius: 5px;
-    font-size:20px;
-    margin-top:5px;
-    padding:10px;
+    font-size:15px;
+    /* margin-top:5px; */
+    padding: 5px;
     border:1px solid red ;
     /* se face transparent */
     background-color: rgb(189 211 219 /25%);
-    /* backdrop-filter: blur(5px); */
+    backdrop-filter: blur(5px);
   }
   .input-group input::placeholder{
     color: #55c5ed;
@@ -73,8 +74,8 @@
   
   .input-group .error{
     color:rgb(242, 18, 18);
-    font-size:16px;
-    margin-top: 5px;
+    font-size:15px;
+    /* margin-top: 5px; */
   }
   
   .input-group.success input{
@@ -178,7 +179,7 @@
     }
     .btn-home{
       width: 150px;
-      height: 50px;
+      height: 30px;
       border-radius: 25px;
       border-color: rgb(34, 193, 195);
       background-color: rgb(189 211 219 / 25%);
@@ -186,6 +187,6 @@
     }
     .heloo-mesage{
       width: 100px;
-      height: 50px;
+      height: 20px;
       color: aliceblue;
     }

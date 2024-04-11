@@ -54,6 +54,7 @@ function validImputs(){
     if(emailVal==""){
         setError(email,"email is required");
         result=false;
+        
     }
     else if(!isValidEmail(emailVal)){
         setError(email,"please enter valid email");
@@ -69,8 +70,12 @@ function validImputs(){
         setError(password,"password must be atleas 8 characters");  
     }
     const cpasswordVal=cpassword.value;
-    if(cpassword==""){
+    if(cpasswordVal==""){
         setError(cpassword, "password is required");
+        result=false;
+    }
+    if (cpasswordVal!=passwordVal){
+        setError(password,"password is required")
         result=false;
     }
     const firstNameVal=firstName.value;

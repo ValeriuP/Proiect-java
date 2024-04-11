@@ -10,7 +10,7 @@ function validateImputs(){
     for (let element of storedData){
       if (element.email==emailVal && element.password==passwordVal){
         // am gasit userul care vrea sa se logeze 
-        return true
+        return element
       }
     }
     return false
@@ -28,20 +28,20 @@ function validateImputs(){
 
 form.addEventListener("submit", (e)=>{
   e.preventDefault();
-
-  if(validateImputs()){
-    let stocareUser=localStorage.setItem("userSave");
-    console.log(stocareUser);
+  let user=validateImputs()
+  if(user){
+    let stocareUser=localStorage.setItem("userSave",JSON.stringify(user));
+    // console.log(stocareUser);
   
-   
-    
-    window.location.href="home.html"
+  window.location.href="home.html"
   }
-  else {
-    // mesaj eroare si stergem textul din campul din input
+  //   window.location.href="home.html"
+  // }
+  // else {
+  //   // mesaj eroare si stergem textul din campul din input
     
 
-  }
+  // }
 })
 function setError(element,message){
     const inputGroup = element.parentElement;
