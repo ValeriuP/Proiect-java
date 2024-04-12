@@ -14,6 +14,8 @@ function validateImputs(){
       }
     }
     setError(password,"password or email is incorrect");
+     // toaster mesaje de eroare
+    toastr["error"]("password or email is incorrect","Alert");
     return false;
     
 

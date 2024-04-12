@@ -12,10 +12,10 @@ let users_1=[];
 // functia de stocare date utilizator
 form.addEventListener("submit",(e)=>{
     e.preventDefault();
-    // toaster mesaje de eroare
-    toastr["error"]("text mesaj","titlu");
-    toastr["error"]("text mesaj","titlu");
-    toastr["error"]("text mesaj","titlu");
+   
+    
+   
+   
 
     // verificare localstorigi pentru memeorare date user
     if(validImputs()){
@@ -53,44 +53,57 @@ function validImputs(){
     const emailVal=email.value;
     if(emailVal==""){
         setError(email,"email is required",);
+         // toaster mesaje de eroare
+        toastr["error"]("email is required","Email");
         result=false;
         
     }
     else if(!isValidEmail(emailVal)){
         setError(email,"please enter valid email");
+         // toaster mesaje de eroare
+        toastr["error"]("please enter valid email","Email");
         result=false;
     }
     const passwordVal=password.value;
     if(passwordVal==""){
         setError(password, "password is required");
+         // toaster mesaje de eroare
+        toastr["error"]("password is required","Password");
         result=false
     }
     else if (passwordVal.length<8){
         result=false;
-        setError(password,"password must be atleas 8 characters");  
+        setError(password,"password must be atleas 8 characters"); 
+         // toaster mesaje de eroare 
+        toastr["error"]("password must be atleas 8 characters","Password");
     }
     const cpasswordVal=cpassword.value;
     if(cpasswordVal==""){
         setError(cpassword, "password is required");
+        toastr["error"]("password is required","Password");
         result=false;
     }
     if (cpasswordVal!=passwordVal){
         setError(password,"password is required")
+        toastr["error"]("password is required","Password");
         result=false;
     }
     const firstNameVal=firstName.value;
     if(firstNameVal==""){
         setError(firstName,"first name is required");
+        toastr["error"]("first name is required","First Name");
         result=false;
     }
     const lestNameVal=lestName.value;
     if(lestNameVal==""){
         setError(lestName, "lest name is required");
+        toastr["error"]("lest name is required","Last Name");
         result=false;
     }
     const birthDateVal=birthDate.value;
     if(birthDateVal==""){
         setError(birthDate, "birth date is required");
+        toastr["error"]("birth date is required","Birth Date");
         result=false
     }
     return result
