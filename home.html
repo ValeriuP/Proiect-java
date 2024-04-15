@@ -12,14 +12,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 </head>
 <body>
+  <div class="main">
     <head class="head-bara" id="head_bara">
          <div class="navbar">
             <!-- <div class="head-container"><h1 class="title-head" id="title_head">Rent Ease</h1>
             </div> -->
             <div class="btn-container" id="btn_container">
-                <button class="btn-home" id="btn_add" onclick="addNewFlat()">Add new flat</button>
+                <button class="btn-home" id="add_new" onclick="addNew()">Add new flat</button>
                 <button class="btn-home" id="btn_view" onclick="viewFlat()"> View Flat</button>
-                <button class="btn-home" id="btn_profil" onclick="myProfil">My Profil</button>
+                <button class="btn-home" id="btn_profil" onclick="myProfil()">My Profil</button>
             </div>
             <div class="heloo-mesage">
                 <p class="user-name" id="user_name">Heloo</p>
@@ -33,32 +34,35 @@
          </div>
     </head>
     <main class="container">
+      <div class="add-new" id="add_new_container">
         <form action="" id="form">
           <h1>Add new flat</h1>
         
             <div class="input-group">
               <label for="city">City</label>
               <input type="city" id="city" name="city"placeholder="Enter City">
+              <div class="error-city"></div>
             </div>
     
             <div class="input-group">
               <label for="Stred_name">Stred Name</label>
               <input type="stredname" id="stred_name" name="stredname"
                placeholder="Enter Stred Name">
+               <div class="error-stred"></div>
             </div>
             <div class="name-container">
                 <div class="input-group">
                   <label for="streed_nr">Streed Nr</label>
                   <input type="streednr" id="streed_nr" name="streednr"
                    placeholder="Enter Streed Nr.">
-                  <div class="error"></div>
+                  <div class=".error-streed_nr"></div>
                 </div>
 
                 <div class="input-group">
                   <label for="area_sizi">Area Sizi</label>
                   <input type="areasizi" id="area_sizi" name="areasizi"
                    placeholder="Enter Area Sizi">
-                  <div class="error"></div>
+                  <div class="error-area_sizi"></div>
                 </div>
         
             </div>
@@ -67,12 +71,13 @@
                     <div id="wrapper">
                         <label for="yes_no_radio">Has AC.</label>
                       <p>
-                      <input type="radio" name="yes_no" checked>Yes</input>
+                      <input type="yes" name="yes_no" id="Ac_yes" checked>Yes</input>
                       </p>
                       <p>
-                      <input type="radio" name="yes_no">No</input>
+                      <input type="no" name="yes_no" id="Ac_no">No</input>
                       </p>
                       </div>
+                      <div class="error-ac"></div>
                 </div>
 
                 <div class="input-group">
@@ -91,25 +96,30 @@
                 <div class="error"></div>
               </div>
 
-              <div class="input-group">
-                <label for="area_sizi">Area Sizi</label>
-                <input type="areasizi" id="area_sizi" name="areasizi"
-                 placeholder="Enter Area Sizi">
+              <div class="input-group-date">
+                <label for="date_availabe">Date Availabe</label>
+                <input type="date" id="date_availabe" name="date">
                 <div class="error"></div>
               </div>
       
           </div>
-          <div class="input-group">
-            <label for="date_availabe">Date Availabe</label>
-            <input type="date" id="date_availabe" name="areasizi"
-             placeholder="Enter Date">
-            <div class="error"></div>
-          </div>
+         
        
         <button type="submit">Save</button>
+        <div class="view-flat-container" id="view_flat_container">
+          <h1>View Flats</h1>
+        
+          <div class="input-group">
+            <label for="city">City</label>
+            <p class="city-value" id="city_value"></p>
+          </div>
+
+        </div>
     
       </form>
+    </div>
     </main>
+  </div> 
 
     
 </body>
