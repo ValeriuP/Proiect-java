@@ -189,10 +189,58 @@
       background-color: rgb(189 211 219 /25%);
       color: white;
     }
-    im
+    
     .add-new{
       display: none;
     }
     .input-group-date{
       color: white;
+    }
+    .switch{
+      position:relative;
+      display:inline-block;
+      width: 125px;
+      height: 25px;
+    }
+
+    .switch input{
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider{
+      position:absolute;
+      cursor:pointer;
+      top: 0;
+      left:60px;
+      right:0;
+      bottom:0;
+      background-color: #ccc;
+      -webkit-transition: .4s;
+    }
+    .slider:before{
+      position:absolute;
+      content:"";
+      height: 18px;
+      width: 14px;
+     
+      left:6px;
+   
+      bottom:4px;
+      background-color: white;
+      -webkit-transition: .4s;
+    }
+
+    input:checked + .slider{
+      background-color: #2196F3;
+    }
+
+    input:focus + .slider{
+      box-shadow: 0 0 1px #2196F3;
+    }
+
+    input:checked + .slider:before{
+     -webkit-transform: translateX(26px);
+
     }

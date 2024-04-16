@@ -1,8 +1,8 @@
 const storedData=JSON.parse(localStorage.getItem("userSave"));
 const userName=document.getElementById("user_name");
 
-userName.innerText=`Hello,${storedData[4]}`;
-console.log(storedData);
+userName.innerText=`Hello,${storedData.firstName } ${storedData.lestName}`;
+// console.log(storedData);
 const form=document.getElementById("form")
 const containerAdd=document.getElementById("btn_container");
 const addnew=document.getElementById("add_new_container")
@@ -14,33 +14,36 @@ function logout(){
 //  adaugare apartament/casa
  function addNew() {
     
-    console.log(storedData)
+    // console.log(storedData)
     addnew.style.display="flex";
    const main=document.querySelector(".main");
     main.classList.add("blur-main")
     
 }
+// functia de verificare inputuri si erori input
 form.addEventListener("submit",(e)=>{
     e.preventDefault();
     const city=document.getElementById("city");
     const streedName=document.getElementById("stred_name");
     const streedNr=document.getElementById("streed_nr");
     const areaSizi=document.getElementById("area_sizi");
-    const acYes=document.getElementById("yes");
-    const acNo=document.getElementById("no");
+    const acYes=document.getElementById("ac_value");
+    // const acNo=document.getElementById("no");
     const yearBuilt=document.getElementById("year_built");
     const rentPrice=document.getElementById("rent_price");
     const dateAvailabe=document.getElementById("date_availabe");
 
     const errorCity=document.querySelector(".error-city");
     const errorStreed=document.querySelector(".error-stred");
-    const errorStreedNr=document.querySelector(".error-streed_nr");
-    const errorAreaSizi=document.querySelector(".error-area_sizi");
-    const errorAcYes=document.querySelector(".Ac_yes");
-    const errorAcNo=document.querySelector(".Ac_no");
-    const errorYearBuilt=document.querySelector(".year_built");
-    const errorRentPrice=document.querySelector(".rent_price");
-    const errorDataAvaible=document.querySelector(".date_availabe");
+    const errorStreedNr=document.querySelector(".error-streed-nr");
+    const errorAreaSizi=document.querySelector(".error-area-sizi");
+  
+    const errorAcYes=document.querySelector(".error-ac");
+
+    // const errorAcNo=document.querySelector(".error-ac");
+    const errorYearBuilt=document.querySelector(".error-year-built");
+    const errorRentPrice=document.querySelector(".error-rent-price");
+    const errorDataAvaible=document.querySelector(".error-data-available");
     let result=true
     if (city.value==""){
         errorCity.innerText="Please enter a city name";
@@ -61,49 +64,49 @@ form.addEventListener("submit",(e)=>{
         result=false
     }
     else{
-        errorStreedNr.innerText==""
+        errorStreedNr.innerText=="";
     }
     if(areaSizi.value==""){
         errorAreaSizi.innerText="Please enter a area sizi";
         result=false
     }
     else{
-        errorAreaSizi.innerText==""
+        errorAreaSizi.innerText=="";
     }
-    if(acYes.value==""){
-        errorAcYes.innerText="Please enter AC";
-        result=false
-    }
-    else{
-        errorAcYes.innerText=""
-    }
-    if(acNo.value==""){
-        errorAcNo.innerText="Please enter AC";
-        result=false
-    }
-    else{
-        errorAcNo.innerText=""
-    }
+    // if(acYes.value==""){
+    //     errorAcYes.innerText="Please enter AC";
+    //     result=false
+    // }
+    // else{
+    //     errorAcYes.innerText="";
+    // }
+    // if(acNo.value==""){
+    //     errorAcNo.innerText="Please enter AC";
+    //     result=false
+    // }
+    // else{
+    //     errorAcNo.innerText="";
+    // }
     if(yearBuilt.value==""){
         errorYearBuilt.innerText="Please enter a year built";
         result=false
     }
     else{
-        errorYearBuilt.innerText=""
+        errorYearBuilt.innerText="";
     }
     if(rentPrice.value==""){
         errorRentPrice.innerText="Please enter a rent Price";
         result=false
     }
     else{
-        errorRentPrice.innerText=""
+        errorRentPrice.innerText="";
     }
     if(dateAvailabe.value==""){
         errorDataAvaible.innerText="Please enter a data availabe";
         result=false
     }
     else{
-        errorDataAvaible.innerText=""
+        errorDataAvaible.innerText="";
     }
     if(result){
         const cityValue=document.getElementById("city_value");
