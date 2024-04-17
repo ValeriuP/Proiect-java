@@ -38,7 +38,7 @@ form.addEventListener("submit", (e)=>{
 
   
 })
-function setError(element,message){
+export function setError(element,message){
     const inputGroup = element.parentElement;
     const errorElement = inputGroup.querySelector('.error');
   

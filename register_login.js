@@ -12,11 +12,8 @@ let users_1=[];
 // functia de stocare date utilizator
 form.addEventListener("submit",(e)=>{
     e.preventDefault();
-   
-    
-   
-   
 
+    
     // verificare localstorigi pentru memeorare date user
     if(validImputs()){
         let stocare=localStorage.getItem("users-1");
