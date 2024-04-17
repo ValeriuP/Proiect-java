@@ -6,6 +6,23 @@ userName.innerText=`Hello,${storedData.firstName } ${storedData.lestName}`;
 const form=document.getElementById("form")
 const containerAdd=document.getElementById("btn_container");
 const addnew=document.getElementById("add_new_container")
+const city=document.getElementById("city");
+const streedName=document.getElementById("stred_name");
+const streedNr=document.getElementById("streed_nr");
+const areaSizi=document.getElementById("area_sizi");
+const acYes=document.getElementById("ac_value");
+const yearBuilt=document.getElementById("year_built");
+const rentPrice=document.getElementById("rent_price");
+const dateAvailabe=document.getElementById("date_availabe");
+
+const errorCity=document.querySelector(".error-city");
+const errorStreed=document.querySelector(".error-stred");
+const errorStreedNr=document.querySelector(".error-streed-nr");
+const errorAreaSizi=document.querySelector(".error-area-sizi");
+const errorAcYes=document.querySelector(".error-ac");
+const errorYearBuilt=document.querySelector(".error-year-built");
+const errorRentPrice=document.querySelector(".error-rent-price");
+const errorDataAvaible=document.querySelector(".error-data-available");
 // functia butonului logout
 function logout(){
     window.location.href="login.html"
@@ -23,27 +40,6 @@ function logout(){
 // functia de verificare inputuri si erori input
 form.addEventListener("submit",(e)=>{
     e.preventDefault();
-    const city=document.getElementById("city");
-    const streedName=document.getElementById("stred_name");
-    const streedNr=document.getElementById("streed_nr");
-    const areaSizi=document.getElementById("area_sizi");
-    const acYes=document.getElementById("ac_value");
-    // const acNo=document.getElementById("no");
-    const yearBuilt=document.getElementById("year_built");
-    const rentPrice=document.getElementById("rent_price");
-    const dateAvailabe=document.getElementById("date_availabe");
-
-    const errorCity=document.querySelector(".error-city");
-    const errorStreed=document.querySelector(".error-stred");
-    const errorStreedNr=document.querySelector(".error-streed-nr");
-    const errorAreaSizi=document.querySelector(".error-area-sizi");
-  
-    const errorAcYes=document.querySelector(".error-ac");
-
-    // const errorAcNo=document.querySelector(".error-ac");
-    const errorYearBuilt=document.querySelector(".error-year-built");
-    const errorRentPrice=document.querySelector(".error-rent-price");
-    const errorDataAvaible=document.querySelector(".error-data-available");
     let result=true
     if (city.value==""){
         errorCity.innerText="Please enter a city name";
@@ -73,20 +69,7 @@ form.addEventListener("submit",(e)=>{
     else{
         errorAreaSizi.innerText=="";
     }
-    // if(acYes.value==""){
-    //     errorAcYes.innerText="Please enter AC";
-    //     result=false
-    // }
-    // else{
-    //     errorAcYes.innerText="";
-    // }
-    // if(acNo.value==""){
-    //     errorAcNo.innerText="Please enter AC";
-    //     result=false
-    // }
-    // else{
-    //     errorAcNo.innerText="";
-    // }
+    
     if(yearBuilt.value==""){
         errorYearBuilt.innerText="Please enter a year built";
         result=false
@@ -113,4 +96,5 @@ form.addEventListener("submit",(e)=>{
         cityValue=city.value;
         cityValue.innerText=city.value;
     }
+
 })

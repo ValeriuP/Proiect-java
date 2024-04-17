@@ -36,6 +36,7 @@ form.addEventListener("submit",(e)=>{
 
 
 })
+
 // obiectul creat pentru localstorigi si pentru altele
 class User {
     constructor(email,password,cpassword,firstName,lestName,birthDate){
@@ -54,59 +55,81 @@ function validImputs(){
     if(emailVal==""){
         setError(email,"email is required",);
          // toaster mesaje de eroare
-        toastr["error"]("email is required","Email");
+        // toastr["error"]("email is required","Email");
         result=false;
         
     }
     else if(!isValidEmail(emailVal)){
         setError(email,"please enter valid email");
          // toaster mesaje de eroare
-        toastr["error"]("please enter valid email","Email");
+        // toastr["error"]("please enter valid email","Email");
         result=false;
     }
+     // toaster mesaje de eroare
+    toastr["error"]("Something is not right !");
     const passwordVal=password.value;
     if(passwordVal==""){
         setError(password, "password is required");
          // toaster mesaje de eroare
-        toastr["error"]("password is required","Password");
+        // toastr["error"]("password is required","Password");
         result=false
     }
     else if (passwordVal.length<8){
         result=false;
         setError(password,"password must be atleas 8 characters"); 
          // toaster mesaje de eroare 
-        toastr["error"]("password must be atleas 8 characters","Password");
+        // toastr["error"]("password must be atleas 8 characters","Password");
     }
     const cpasswordVal=cpassword.value;
     if(cpasswordVal==""){
         setError(cpassword, "password is required");
-        toastr["error"]("password is required","Password");
+        // toastr["error"]("password is required","Password");
         result=false;
     }
     if (cpasswordVal!=passwordVal){
         setError(password,"password is required")
-        toastr["error"]("password is required","Password");
+        // toastr["error"]("password is required","Password");
         result=false;
     }
     const firstNameVal=firstName.value;
     if(firstNameVal==""){
         setError(firstName,"first name is required");
-        toastr["error"]("first name is required","First Name");
+        // toastr["error"]("first name is required","First Name");
         result=false;
     }
     const lestNameVal=lestName.value;
     if(lestNameVal==""){
         setError(lestName, "lest name is required");
-        toastr["error"]("lest name is required","Last Name");
+        // toastr["error"]("lest name is required","Last Name");
         result=false;
     }
     const birthDateVal=birthDate.value;
     if(birthDateVal==""){
+        // validateBirthDate()
         setError(birthDate, "birth date is required");
-        toastr["error"]("birth date is required","Birth Date");
+        // toastr["error"]("birth date is required","Birth Date");
         result=false
     }
     return result
+}
+// verificare varsta    NU FUNCTIONEAZA
+function validateBirthDate(input){
+    let birthDate=new Date(input.value);
+    let today=new Date();
+    let age=today.getFullYear() - birthDate.getFullYear();
+    let monthDifference = today.getMonth() - birthDate.getMonth();
+  console.log(birthDate)
+    if (monthDifference < 0 || (monthDifference === 0 && today.getMonth())) {
+        age--
+    }
+    if(age<18) {
+        setError(birthDate, "You must be at least 18 year")
+        input.style.borderColor = "red"
+    }
+    else{
+        setError.textContend ="";
+    }
+
 }
 // functia care trimite eroarea
 function setError(element,message){
@@ -143,7 +166,6 @@ function isValidEmail(email){
 
 
 }
-
 
 
 
