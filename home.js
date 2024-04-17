@@ -98,7 +98,11 @@ form.addEventListener("submit",(e)=>{
        let apart=[];
         let apartament=new Apartament(city.value,streedName.value,streedNr.value,areaSizi.value,acYes.value,yearBuilt.value,rentPrice.value,dateAvailabe.value);
        apart.push(apartament)
+    
         localStorage.apartament=JSON.stringify(apartament);
+        // localStorage.setItem("users-1",JSON.stringify(apartament));
+        
+
 
         
         // apartament=[];
@@ -124,7 +128,7 @@ class Apartament{
     }
 }
 function getLoggedInUser(){
-return localStorage.getItem("userSave")
+return localStorage.getItem("apartament")
 }
 
 function saveApartament(apartamentData){
@@ -132,9 +136,10 @@ function saveApartament(apartamentData){
     if(!curentUser){
         toastr["error"]("No user is currently logged in !","Alert");
         return
+        // console.log("salut")
     }
-   
-    localStorage.setItem("apartamentStorage:$(curentUser)",JSON.stringify(apartamentData));
+   let apartmentDetali=localStorage.getItem("user-1");
+    localStorage.setItem("apartament:$(curentUser)",JSON.stringify(apartamentData));
 }
 function getApartamentData(){
     let curentUser= getLoggedInUser();
@@ -142,6 +147,6 @@ function getApartamentData(){
         toastr["error"]("No user is currently logged in !","Alert");
         return
     }
-    let apartamentData=localStorage.getItem("apartamentstorage:$(curentUser)");
+    let apartamentData=localStorage.getItem("apartament:$(curentUser)");
     return apartamentData ? JSON.parse(apartamentData):[];
 }
