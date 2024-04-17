@@ -91,15 +91,27 @@ form.addEventListener("submit",(e)=>{
     else{
         errorDataAvaible.innerText="";
     }
-    // if(result){
-    //     const cityValue=document.getElementById("city");
-    //     cityValue=city.value;
-    //     cityValue.innerText=city.value;
-    // }
+    if(result){
+        // let cityValue=document.getElementById("city");
+        // cityValue=city.value;
+        // cityValue.innerText=city.value;
+       let apart=[];
+        let apartament=new Apartament(city.value,streedName.value,streedNr.value,areaSizi.value,acYes.value,yearBuilt.value,rentPrice.value,dateAvailabe.value);
+       apart.push(apartament)
+        localStorage.apartament=JSON.stringify(apartament);
+
+        
+        // apartament=[];
+        
+        // apartament.push(apartamentSave)
+       
+        
+        saveApartament()
+    }
 
 })
 // constructor de date
-class apartament{
+class Apartament{
     constructor(city,streedName,streedNr,areaSizi,acYes,yearBuilt,rentPrice,dateAvailabe){
         this.city=city;
         this.streedName=streedName;
@@ -112,15 +124,17 @@ class apartament{
     }
 }
 function getLoggedInUser(){
-return localStorage.getItem("loggedInUser")
+return localStorage.getItem("userSave")
 }
+
 function saveApartament(apartamentData){
     let curentUser=getLoggedInUser();
     if(!curentUser){
         toastr["error"]("No user is currently logged in !","Alert");
         return
     }
-    localStorage.setItem("apartamentStorage:$(curentUser)",JSON.stringify(apartamentData))
+   
+    localStorage.setItem("apartamentStorage:$(curentUser)",JSON.stringify(apartamentData));
 }
 function getApartamentData(){
     let curentUser= getLoggedInUser();
