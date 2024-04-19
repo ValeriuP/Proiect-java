@@ -91,6 +91,7 @@ form.addEventListener("submit",(e)=>{
     else{
         errorDataAvaible.innerText="";
     }
+    toastr["error"]("Something is not right !");
     if(result){
         // let cityValue=document.getElementById("city");
         // cityValue=city.value;
@@ -141,12 +142,12 @@ function saveApartament(apartamentData){
    let apartmentDetali=localStorage.getItem("user-1");
     localStorage.setItem("apartament:$(curentUser)",JSON.stringify(apartamentData));
 }
-function getApartamentData(){
-    let curentUser= getLoggedInUser();
-    if(!curentUser){
-        toastr["error"]("No user is currently logged in !","Alert");
-        return
-    }
-    let apartamentData=localStorage.getItem("apartament:$(curentUser)");
-    return apartamentData ? JSON.parse(apartamentData):[];
-}
+// function getApartamentData(){
+//     let curentUser= getLoggedInUser();
+//     if(!curentUser){
+//         toastr["error"]("No user is currently logged in !","Alert");
+//         return
+//     }
+//     let apartamentData=localStorage.getItem("apartament:$(curentUser)");
+//     return apartamentData ? JSON.parse(apartamentData):[];
+// }

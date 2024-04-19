@@ -36,13 +36,14 @@ form.addEventListener("submit",(e)=>{
 
 // obiectul creat pentru localstorigi si pentru altele
 class User {
-    constructor(email,password,cpassword,firstName,lestName,birthDate){
+    constructor(email,password,cpassword,firstName,lestName,birthDate,){
         this.email=email;
         this.password=password;
         this.cpassword=cpassword;
         this.firstName=firstName;
         this.lestName=lestName;
         this.birthDate=birthDate;
+        this.apartament=[];
     }
 }
 // functia de validare date utilizator
@@ -51,15 +52,11 @@ function validImputs(){
     const emailVal=email.value;
     if(emailVal==""){
         setError(email,"email is required",);
-         // toaster mesaje de eroare
-        // toastr["error"]("email is required","Email");
         result=false;
         
     }
     else if(!isValidEmail(emailVal)){
         setError(email,"please enter valid email");
-         // toaster mesaje de eroare
-        // toastr["error"]("please enter valid email","Email");
         result=false;
     }
      // toaster mesaje de eroare
@@ -67,44 +64,35 @@ function validImputs(){
     const passwordVal=password.value;
     if(passwordVal==""){
         setError(password, "password is required");
-         // toaster mesaje de eroare
-        // toastr["error"]("password is required","Password");
         result=false
     }
     else if (passwordVal.length<8){
         result=false;
         setError(password,"password must be atleas 8 characters"); 
-         // toaster mesaje de eroare 
-        // toastr["error"]("password must be atleas 8 characters","Password");
     }
     const cpasswordVal=cpassword.value;
     if(cpasswordVal==""){
         setError(cpassword, "password is required");
-        // toastr["error"]("password is required","Password");
         result=false;
     }
     if (cpasswordVal!=passwordVal){
         setError(password,"password is required")
-        // toastr["error"]("password is required","Password");
         result=false;
     }
     const firstNameVal=firstName.value;
     if(firstNameVal==""){
         setError(firstName,"first name is required");
-        // toastr["error"]("first name is required","First Name");
         result=false;
     }
     const lestNameVal=lestName.value;
     if(lestNameVal==""){
         setError(lestName, "lest name is required");
-        // toastr["error"]("lest name is required","Last Name");
         result=false;
     }
     const birthDateVal=birthDate.value;
     if(birthDateVal==""){
-        // validateBirthDate()
+        validateBirthDate()
         setError(birthDate, "birth date is required");
-        // toastr["error"]("birth date is required","Birth Date");
         result=false
     }
     return result
@@ -119,6 +107,7 @@ function validateBirthDate(input){
     if (monthDifference < 0 || (monthDifference === 0 && today.getMonth())) {
         age--
     }
+    console.log()
     if(age<18) {
         setError(birthDate, "You must be at least 18 year")
         input.style.borderColor = "red"
