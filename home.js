@@ -91,7 +91,7 @@ form.addEventListener("submit",(e)=>{
     else{
         errorDataAvaible.innerText="";
     }
-    toastr["error"]("Something is not right !");
+    // toastr["error"]("Something is not right !");
     if(result){
         // let cityValue=document.getElementById("city");
         // cityValue=city.value;
@@ -99,9 +99,10 @@ form.addEventListener("submit",(e)=>{
        let apart=[];
         let apartament=new Apartament(city.value,streedName.value,streedNr.value,areaSizi.value,acYes.value,yearBuilt.value,rentPrice.value,dateAvailabe.value);
        apart.push(apartament)
-    
-        localStorage.apartament=JSON.stringify(apartament);
+        
+        // localStorage.apartament=JSON.stringify(apartamentData);
         // localStorage.setItem("users-1",JSON.stringify(apartament));
+        
         
 
 
@@ -111,10 +112,11 @@ form.addEventListener("submit",(e)=>{
         // apartament.push(apartamentSave)
        
         
-        saveApartament()
+        // saveApartament()
     }
 
 })
+
 // constructor de date
 class Apartament{
     constructor(city,streedName,streedNr,areaSizi,acYes,yearBuilt,rentPrice,dateAvailabe){
@@ -128,20 +130,24 @@ class Apartament{
         this.dateAvailabe=dateAvailabe
     }
 }
-function getLoggedInUser(){
-return localStorage.getItem("apartament")
-}
+// function saveApartament(){
+//     let 
+// }
+// function getLoggedInUser(){
+// return localStorage.getItem("apartament")
+// }
 
-function saveApartament(apartamentData){
-    let curentUser=getLoggedInUser();
-    if(!curentUser){
-        toastr["error"]("No user is currently logged in !","Alert");
-        return
-        // console.log("salut")
-    }
-   let apartmentDetali=localStorage.getItem("user-1");
-    localStorage.setItem("apartament:$(curentUser)",JSON.stringify(apartamentData));
-}
+// function saveApartament(apartamentData){
+//     let curentUser=getLoggedInUser();
+//     if(!curentUser){
+//         toastr["error"]("No user is currently logged in !","Alert");
+//         return
+//         // console.log("salut")
+//     }
+//    let apartmentDetali=localStorage.getItem("apartament");
+
+//     localStorage.setItem("apartament",JSON.stringify(apartamentData));
+// }
 // function getApartamentData(){
 //     let curentUser= getLoggedInUser();
 //     if(!curentUser){

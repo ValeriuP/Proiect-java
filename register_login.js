@@ -46,6 +46,9 @@ class User {
         this.apartament=[];
     }
 }
+
+
+
 // functia de validare date utilizator
 function validImputs(){
     let result=true;
@@ -97,26 +100,58 @@ function validImputs(){
     }
     return result
 }
-// verificare varsta    NU FUNCTIONEAZA
 function validateBirthDate(input){
-    let birthDate=new Date(input.value);
-    let today=new Date();
-    let age=today.getFullYear() - birthDate.getFullYear();
-    let monthDifference = today.getMonth() - birthDate.getMonth();
-  console.log(birthDate)
-    if (monthDifference < 0 || (monthDifference === 0 && today.getMonth())) {
-        age--
+    let dob=new Date(input.value);
+    let curentDate=new Date();
+    let timeDif=curentDate.getTime() -dob.getTime();
+    let age=Math.floor(timeDif / (1000 * 3600 * 24 * 365.25));
+    return age >=18;
+    if (age<18){
+        setError(birthDate, "You must be at least 18 year");
+        result=false
+        console.log(age)
     }
-    console.log()
-    if(age<18) {
-        setError(birthDate, "You must be at least 18 year")
-        input.style.borderColor = "red"
     }
-    else{
-        setError.textContend ="";
-    }
+    // verificare varsta    NU FUNCTIONEAZA
+    // function validateBirthDate(input){
+    //     let birthDate=new Date(input.value);
+    //     let today=new Date();
+    //     let age=today.getFullYear() - birthDate.getFullYear();
+    //     let monthDifference = today.getMonth() - birthDate.getMonth();
+      
+    //     if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
+    //         age--
+    //     }
+    //     console.log(age)
+    //     if(age<18) {
+    //         setError(birthDate, "You must be at least 18 year")
+    //         input.style.borderColor = "red"
+    //         result=false;
+    //     }
+    //     else{
+    //         setError.textContend ="";
+    //     }
+    
+    // }
+    // const enteredValue = new Date('<%=ui_txtDOB.ClientID %>');;
+    // const enteredAge = new Date(enteredValue.value);
+    // if( enteredAge > 18 ) {
+    //     alert("DOB not valid");
+    //     enteredValue.focus();
+    //     result= false;
+    //     console.log(salut)
+    // }
+    // function validateBirthDate(DOB) {
+    //     let today = new Date();
+    //     let birthDate = new Date(DOB);
+    //     let age = today.getFullYear() - birthDate.getFullYear();
+    //     let m = today.getMonth() - birthDate.getMonth();
+    //     if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+    //         age--;
+    //     }    
+    //     return age;
+    // }
 
-}
 // functia care trimite eroarea
 function setError(element,message){
     const inputGroup=element.parentElement;
