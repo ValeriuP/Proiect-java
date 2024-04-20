@@ -97,10 +97,20 @@ form.addEventListener("submit",(e)=>{
         // cityValue=city.value;
         // cityValue.innerText=city.value;
        let apart=[];
-        let apartament=new Apartament(city.value,streedName.value,streedNr.value,areaSizi.value,acYes.value,yearBuilt.value,rentPrice.value,dateAvailabe.value);
-       apart.push(apartament)
+    //    apart.push(apartament)
+    let apartament=new Apartament(city.value,streedName.value,streedNr.value,areaSizi.value,acYes.value,yearBuilt.value,rentPrice.value,dateAvailabe.value);
         
-        // localStorage.apartament=JSON.stringify(apartamentData);
+        let apartamentData=localStorage.getItem(apartament);
+        // console.log(apartament);
+        if(apartamentData){
+            apart=JSON.parse(apartamentData);
+            console.log(apart)
+        }
+        apart.push(apartament)
+        localStorage.apartament=JSON.stringify(apart);
+        localStorage.setItem("apartament",JSON.stringify(apart));
+        
+        
         // localStorage.setItem("users-1",JSON.stringify(apartament));
         
         
