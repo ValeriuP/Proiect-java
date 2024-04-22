@@ -195,6 +195,10 @@
     
     .add-new{
       display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%)
     }
     .input-group-date{
       color: white;
@@ -211,5 +215,30 @@
       width: 0;
       height: 0;
     }
+/* home */
+.main{
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  flex-wrap: wrap;
 
-    
+}
+.shifts-table{
+  width: 60%;
+  margin:30px auto;
+border-collapse: collapse;
+}
+th,td{
+  border:3px solid black;
+  width: 300px;
+  backdrop-filter: blur(3px);
+  background-color: rgb(189 211 219 /25%);
+  color: white;
+}
+/* rgb(34,193,195) */
+.btn-container-viewFlat{
+  display: none;
+}
+.viewFlat-container{
+  display: none;
+}

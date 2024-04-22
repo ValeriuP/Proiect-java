@@ -35,100 +35,29 @@
          </div>
     </head>
     <main class="container">
-      <div class="add-new" id="add_new_container">
-        <form action="" id="form">
-          <h1>Add new flat</h1>
-        
-            <div class="input-group">
-              <label for="city">City</label>
-              <input type="city" id="city" name="city"placeholder="Enter City">
-              <div class="error-city"></div>
-            </div>
-    
-            <div class="input-group">
-              <label for="Stred_name">Stred Name</label>
-              <input type="stredname" id="stred_name" name="stredname"
-               placeholder="Enter Stred Name">
-               <div class="error-stred"></div>
-            </div>
-            <div class="name-container">
-                <div class="input-group">
-                  <label for="streed_nr">Streed Nr</label>
-                  <input type="streednr" id="streed_nr" name="streednr"
-                   placeholder="Enter Streed Nr.">
-                  <div class="error-streed-nr"></div>
-                </div>
-
-                <div class="input-group">
-                  <label for="area_sizi">Area Sizi</label>
-                  <input type="areasizi" id="area_sizi" name="areasizi"
-                   placeholder="Enter Area Sizi">
-                  <div class="error-area-sizi"></div>
-                </div>
-        
-            </div>
-            <div class="name-container">
-                <div class="input-group">
-                    <div id="wrapper">
-                      <label class="switch">Has AC:
-                      <input type="checkbox" id="ac_value">
-                      <span class="slider"></span>
-                    </label>
-                      </div>
-                      <div class="error-ac"></div>
-                </div>
-             
-                <div class="input-group">
-                  <label for="year_built">Year Built</label>
-                  <input type="yearbuilt" id="year_built" name="yearbuilt"
-                   placeholder="Enter Year Built">
-                  <div class="error-year-built"></div>
-                </div>
-                
-            </div>
-            <div class="name-container">
-              <div class="input-group">
-                <label for="rent_price">Rent Price</label>
-                <input type="rentprice" id="rent_price" name="streednr"
-                 placeholder="Enter Rent Price">
-                <div class="error-rent-price"></div>
-              </div>
-
-              <div class="input-group-date">
-                <label for="date_availabe">Date Availabe</label>
-                <input type="date" id="date_availabe" name="date">
-                <div class="error-data-available"></div>
-              </div>
-      
-          </div>
-         
-       
-        <button type="submit">Save</button>
-        <div class="view-flat-container" id="view_flat_container">
-          <h1>View Flats</h1>
-        
-          <div class="input-group">
-            <label for="city">City</label>
-            <p class="city-value" id="city_value"></p>
-          </div>
-
-        </div>
-    
-      </form>
-    </div>
+     
     <div class="viewFlat-container">
-      <div class="view-flat" id="view_flat">
-        <form action="" id="form">
-          <h1>View flat</h1>
-      <div class="input-group">
-        <label for="city">City</label>
-        <h1 id="city"> Salut</h1>
-      </div>
-      <div class="input-group">
-        <label for="Stred_name">Stred Name</label>
-        <h1 id="stred_name"> Salut 2</h1>
-      </div>
-
+      <div class="content">
+        <table class="shifts_table" id="data-table">
+            <thead>
+                <tr>
+                    <th>City</th>
+                    <th>Stred Name</th>
+                    <th>Streed Nr</th>
+                    <th>Area Sizi</th>
+                    <th>Has Ac</th>
+                    <th>Year Built</th>
+                    <th>Rent Price</th>
+                    <th>Data Availabe</th>
+                    <th>Favorites</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- aici o sa apara turele -->
+            </tbody>
+        </table>
+    </div>
     </div>
     <div class="myProfil-container">
       

@@ -15,6 +15,7 @@ const yearBuilt=document.getElementById("year_built");
 const rentPrice=document.getElementById("rent_price");
 const dateAvailabe=document.getElementById("date_availabe");
 
+
 const errorCity=document.querySelector(".error-city");
 const errorStreed=document.querySelector(".error-stred");
 const errorStreedNr=document.querySelector(".error-streed-nr");
@@ -23,6 +24,10 @@ const errorAcYes=document.querySelector(".error-ac");
 const errorYearBuilt=document.querySelector(".error-year-built");
 const errorRentPrice=document.querySelector(".error-rent-price");
 const errorDataAvaible=document.querySelector(".error-data-available");
+const viewFlatContainer=document.getElementById("view_flat_container");
+const viewFlatBtn=document.getElementById("btn_container_viewFlat");
+const addNewBtn=document.getElementById("btn_container")
+// const form=document.getElementById("form");
 // functia butonului logout
 function logout(){
     window.location.href="login.html"
@@ -31,10 +36,12 @@ function logout(){
 //  adaugare apartament/casa
  function addNew() {
     
-    // console.log(storedData)
     addnew.style.display="flex";
-   const main=document.querySelector(".main");
-    main.classList.add("blur-main")
+    viewFlatContainer.style.display="none";
+    viewFlatBtn.style.display="none";
+    addNewBtn.style.display="flex";
+//    const main=document.querySelector(".main");
+    // main.classList.add("blur-main")
     
 }
 // functia de verificare inputuri si erori input
@@ -91,13 +98,7 @@ form.addEventListener("submit",(e)=>{
     else{
         errorDataAvaible.innerText="";
     }
-    toastr["error"]("Something is not right !");
     if(result){
-        // let cityValue=document.getElementById("city");
-        // cityValue=city.value;
-        // cityValue.innerText=city.value;
-    //    let apart=[];
-    //    apart.push(apartament)
     let apartament=new Apartament(city.value,streedName.value,streedNr.value,areaSizi.value,acYes.value,yearBuilt.value,rentPrice.value,dateAvailabe.value);
         
         let logedUser=JSON.parse(localStorage.getItem("userSave")) || [];
@@ -109,26 +110,25 @@ form.addEventListener("submit",(e)=>{
                 }
             }
             localStorage.setItem("users-1",JSON.stringify(allUser));
+            city.value="";
+            streedName.value="";
+            streedNr.value="";
+            areaSizi.value="";
+            yearBuilt.value="";
+            rentPrice.value="";
+            dateAvailabe.value="";
            return true
         }
 
         alert("ceva nu e bine")
         toastr["error"]("Something is not right !");
-        // localStorage.setItem("users-1",JSON.stringify(apartament));
-        
-        
-
-
-        
-        // apartament=[];
-        
-        // apartament.push(apartamentSave)
        
-        
-        // saveApartament()
     }
-
+    
+    
 })
+
+
 
 // constructor de date
 class Apartament{
@@ -142,34 +142,70 @@ class Apartament{
         this.rentPrice=rentPrice;
         this.dateAvailabe=dateAvailabe
     }
+    
 }
-// function saveApartament(){
-//     let 
-// }
-// function getLoggedInUser(){
-// return localStorage.getItem("apartament")
-// }
+// functia care arata apartamentele
+function viewFlat(){
+    const dataTable=document.getElementById("data_table").getElementsByTagName("tbody")[0];  
+    viewFlatContainer.style.display="flex";
+    addNewBtn.style.display="none";
+    viewFlatBtn.style.display=("flex");
+    addnew.style.display="none";
+    let storedData=JSON.parse(localStorage.getItem("users-1")) || [];
+    let apartaments;
+    const user=JSON.parse(localStorage.getItem("userSave")) || [];
+    apartaments=storedData.find(x=>x.email=user.email).apartament;
+    console.log(apartaments)
+    if(dataTable.childElementCount==0){
+        apartaments.forEach(rowData=>{
+    
+    const newRow=dataTable.insertRow();
+    const cityCell=newRow.insertCell(0);
+    const streedNameCell=newRow.insertCell(1);
+    const streedNrCell=newRow.insertCell(2);
+    const areaSiziCell=newRow.insertCell(3);
+    const acYesCell=newRow.insertCell(4);
+    const yearBuiltCell=newRow.insertCell(5);
+    const rentPriceCell=newRow.insertCell(6);
+    const dateAvailabeCell=newRow.insertCell(7)
+    const deleteCell=newRow.insertCell(8);
+    const favoritesApart=newRow.insertCell(9)
+    cityCell.textContent=rowData.city;
+    streedNameCell.textContent=rowData.streedName;
+    streedNrCell.textContent=rowData.streedName;
+    areaSiziCell.textContent=rowData.areaSizi;
+    acYesCell.textContent=rowData.acYes;
+    yearBuiltCell.textContent=rowData.yearBuilt;
+    rentPriceCell.textContent=rowData.rentPrice;
+    dateAvailabeCell.textContent=rowData.dateAvailabe;
 
-// function saveApartament(apartamentData){
-//     let curentUser=getLoggedInUser();
-//     if(!curentUser){
-//         toastr["error"]("No user is currently logged in !","Alert");
-//         return
-//         // console.log("salut")
-//     }
-//    let apartmentDetali=localStorage.getItem("apartament");
+    deleteCell.innerHTML=`<button class="delet-btn" onclick="deleteRow(this)">Delete</button>`;
+    favoritesApart.innerHTML=`<button class="favorites-btn" onclick="favorites(this)">Favorites</button>`
+     })}
+    }
 
-//     localStorage.setItem("apartament",JSON.stringify(apartamentData));
-// }
-// function getApartamentData(){
-//     let curentUser= getLoggedInUser();
-//     if(!curentUser){
-//         toastr["error"]("No user is currently logged in !","Alert");
-//         return
-//     }
-//     let apartamentData=localStorage.getItem("apartament:$(curentUser)");
-//     return apartamentData ? JSON.parse(apartamentData):[];
-// }
+function deleteRow(row){
+    const rowIndex=row.parentNode.parentNode.rowIndex -1;
+    dataTable.deleteRow(rowIndex);
+    saveData()
+    
+}
+function saveData(){
+    
+    const dataValue=[];
+    for(i=0;i<dataTable.rows.length;i++){
+        const row=dataTable.rows[i];
+        const rowData={
+            hours:row.cells[0].textContent,
+            location:row.cells[1].textContent
+
+        }
+        dataValue.push(rowData);
+
+    }
+    localStorage.setItem("dataTableValue",JSON.stringify(dataValue));
+
+}
 
 // toster  este pentru alerte eroare
 toastr.options = {
@@ -188,4 +224,4 @@ toastr.options = {
     "hideEasing": "linear",
     "showMethod": "fadeIn",
     "hideMethod": "fadeOut"
-  }
+}
