@@ -91,26 +91,29 @@ form.addEventListener("submit",(e)=>{
     else{
         errorDataAvaible.innerText="";
     }
-    // toastr["error"]("Something is not right !");
+    toastr["error"]("Something is not right !");
     if(result){
         // let cityValue=document.getElementById("city");
         // cityValue=city.value;
         // cityValue.innerText=city.value;
-       let apart=[];
+    //    let apart=[];
     //    apart.push(apartament)
     let apartament=new Apartament(city.value,streedName.value,streedNr.value,areaSizi.value,acYes.value,yearBuilt.value,rentPrice.value,dateAvailabe.value);
         
-        let apartamentData=localStorage.getItem(apartament);
-        // console.log(apartament);
-        if(apartamentData){
-            apart=JSON.parse(apartamentData);
-            console.log(apart)
+        let logedUser=JSON.parse(localStorage.getItem("userSave")) || [];
+        let allUser=JSON.parse(localStorage.getItem("users-1")) || [];
+        if(logedUser && allUser){
+            for (let user of allUser){
+                if (user.email===logedUser.email){
+                    user.apartament.push(apartament)
+                }
+            }
+            localStorage.setItem("users-1",JSON.stringify(allUser));
+           return true
         }
-        apart.push(apartament)
-        localStorage.apartament=JSON.stringify(apart);
-        localStorage.setItem("apartament",JSON.stringify(apart));
-        
-        
+
+        alert("ceva nu e bine")
+        toastr["error"]("Something is not right !");
         // localStorage.setItem("users-1",JSON.stringify(apartament));
         
         
@@ -167,3 +170,22 @@ class Apartament{
 //     let apartamentData=localStorage.getItem("apartament:$(curentUser)");
 //     return apartamentData ? JSON.parse(apartamentData):[];
 // }
+
+// toster  este pentru alerte eroare
+toastr.options = {
+    "closeButton": false,
+    "debug": true,
+    "newestOnTop": false,
+    "progressBar": true,
+    "positionClass": "toast-top-left",
+    "preventDuplicates": false,
+    "onclick": null,
+    "showDuration": "300",
+    "hideDuration": "1000",
+    "timeOut": "5000",
+    "extendedTimeOut": "1000",
+    "showEasing": "swing",
+    "hideEasing": "linear",
+    "showMethod": "fadeIn",
+    "hideMethod": "fadeOut"
+  }

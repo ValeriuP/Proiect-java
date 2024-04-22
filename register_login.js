@@ -94,23 +94,28 @@ function validImputs(){
     }
     const birthDateVal=birthDate.value;
     if(birthDateVal==""){
-        validateBirthDate()
+        
+        
         setError(birthDate, "birth date is required");
+        result=false
+    }
+    if(validateBirthDate(birthDateVal)){
         result=false
     }
     return result
 }
 function validateBirthDate(input){
-    let dob=new Date(input.value);
+    let dob=new Date(input);
     let curentDate=new Date();
     let timeDif=curentDate.getTime() -dob.getTime();
     let age=Math.floor(timeDif / (1000 * 3600 * 24 * 365.25));
-    return age >=18;
+    
     if (age<18){
         setError(birthDate, "You must be at least 18 year");
-        result=false
+       return true
         console.log(age)
     }
+    return false
     }
     // verificare varsta    NU FUNCTIONEAZA
     // function validateBirthDate(input){
