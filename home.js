@@ -2,7 +2,7 @@ const storedData=JSON.parse(localStorage.getItem("userSave"));
 const userName=document.getElementById("user_name");
 
 userName.innerText=`Hello,${storedData.firstName } ${storedData.lestName}`;
-// console.log(storedData);
+
 const form=document.getElementById("form")
 const containerAdd=document.getElementById("btn_container");
 const addnew=document.getElementById("add_new_container")
@@ -26,8 +26,9 @@ const errorRentPrice=document.querySelector(".error-rent-price");
 const errorDataAvaible=document.querySelector(".error-data-available");
 const viewFlatContainer=document.getElementById("view_flat_container");
 const viewFlatBtn=document.getElementById("btn_container_viewFlat");
-const addNewBtn=document.getElementById("btn_container")
-// const form=document.getElementById("form");
+const addNewBtn=document.getElementById("btn_container");
+const profile=document.getElementById("data_table_profil");
+
 // functia butonului logout
 function logout(){
     window.location.href="login.html"
@@ -40,8 +41,7 @@ function logout(){
     viewFlatContainer.style.display="none";
     viewFlatBtn.style.display="none";
     addNewBtn.style.display="flex";
-//    const main=document.querySelector(".main");
-    // main.classList.add("blur-main")
+
     
 }
 // functia de verificare inputuri si erori input
@@ -144,7 +144,7 @@ class Apartament{
     }
     
 }
-// functia care arata apartamentele
+// functia de vizualizat  apartamentele
 function viewFlat(){
     const dataTable=document.getElementById("data_table").getElementsByTagName("tbody")[0];  
     viewFlatContainer.style.display="flex";
@@ -183,15 +183,15 @@ function viewFlat(){
     favoritesApart.innerHTML=`<button class="favorites-btn" onclick="favorites(this)">Favorites</button>`
      })}
     }
-
+// functia de sters din tabelul cu apartamente
 function deleteRow(row){
     const rowIndex=row.parentNode.parentNode.rowIndex -1;
     dataTable.deleteRow(rowIndex);
     saveData()
     
+    // functia de salvare apartamente
 }
 function saveData(){
-    
     const dataValue=[];
     for(i=0;i<dataTable.rows.length;i++){
         const row=dataTable.rows[i];
@@ -204,6 +204,13 @@ function saveData(){
 
     }
     localStorage.setItem("dataTableValue",JSON.stringify(dataValue));
+
+}
+// functia de vizualizare profilul utilizatorului
+function viewProfil() {
+    viewFlatContainer.style.display="none";
+    viewFlatBtn.style.display=("flex");
+    addnew.style.display="none";
 
 }
 
