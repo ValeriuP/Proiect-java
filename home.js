@@ -15,6 +15,13 @@ const yearBuilt=document.getElementById("year_built");
 const rentPrice=document.getElementById("rent_price");
 const dateAvailabe=document.getElementById("date_availabe");
 
+const email=document.getElementById("email");
+const password=document.getElementById("password");
+const cpassword=document.getElementById("cpassword");
+const firstName=document.getElementById("first_name");
+const lestName=document.getElementById("last_name");
+const birthDate=document.getElementById("birth_date");
+
 
 const errorCity=document.querySelector(".error-city");
 const errorStreed=document.querySelector(".error-stred");
@@ -27,7 +34,7 @@ const errorDataAvaible=document.querySelector(".error-data-available");
 const viewFlatContainer=document.getElementById("view_flat_container");
 const viewFlatBtn=document.getElementById("btn_container_viewFlat");
 const addNewBtn=document.getElementById("btn_container");
-const profile=document.getElementById("data_table_profil");
+const profile=document.getElementById("myProfil_container");
 
 // functia butonului logout
 function logout(){
@@ -41,7 +48,7 @@ function logout(){
     viewFlatContainer.style.display="none";
     viewFlatBtn.style.display="none";
     addNewBtn.style.display="flex";
-
+    profile.style.display="none";
     
 }
 // functia de verificare inputuri si erori input
@@ -146,16 +153,17 @@ class Apartament{
 }
 // functia de vizualizat  apartamentele
 function viewFlat(){
-    const dataTable=document.getElementById("data_table").getElementsByTagName("tbody")[0];  
     viewFlatContainer.style.display="flex";
     addNewBtn.style.display="none";
     viewFlatBtn.style.display=("flex");
     addnew.style.display="none";
+    profile.style.display="none";
+    const dataTable=document.getElementById("data_table").getElementsByTagName("tbody")[0];  
     let storedData=JSON.parse(localStorage.getItem("users-1")) || [];
     let apartaments;
     const user=JSON.parse(localStorage.getItem("userSave")) || [];
     apartaments=storedData.find(x=>x.email=user.email).apartament;
-    console.log(apartaments)
+    // console.log(apartaments)
     if(dataTable.childElementCount==0){
         apartaments.forEach(rowData=>{
     
@@ -170,6 +178,7 @@ function viewFlat(){
     const dateAvailabeCell=newRow.insertCell(7)
     const deleteCell=newRow.insertCell(8);
     const favoritesApart=newRow.insertCell(9)
+
     cityCell.textContent=rowData.city;
     streedNameCell.textContent=rowData.streedName;
     streedNrCell.textContent=rowData.streedName;
@@ -207,11 +216,35 @@ function saveData(){
 
 }
 // functia de vizualizare profilul utilizatorului
-function viewProfil() {
-    viewFlatContainer.style.display="none";
-    viewFlatBtn.style.display=("flex");
+function myProfil() {
     addnew.style.display="none";
+    viewFlatContainer.style.display="none";
+    viewFlatBtn.style.display="none";
+    addNewBtn.style.display="flex";
+    profile.style.display="flex";
+    const dataTableProfil=document.getElementById("data_table_profil").getElementsByTagName("tbody")[0];
+    let dataProfil=JSON.parse(localStorage.getItem("userSave"));
 
+    let profil;
+    profil=dataProfil
+    if(dataTableProfil.childElementCount==0){
+        profil.forEach(rowData=>{
+            const newRow=dataTableProfil.insertRow();
+            const firstNameCell=newRow.insertCell(0);
+            const lastNameCell=newRow.insertCell(1);
+            const emailCell=newRow.insertCell(2);
+            const birthDateCell=newRow.insertCell(3);
+            const changepasswordCell=newRow.insertCell(4);
+             
+            firstNameCell.textContent=rowData.firstName;
+            lastNameCell.textContent=newRow.lastName;
+            emailCell.textContent=newRow.email;
+            birthDateCell.textContent=newRow.birthDate;
+
+            changepasswordCell.innerHTML=`input class="changepassword-imp" onclik="changepassword(this)">Change Password,/input>`;
+
+        })
+    }
 }
 
 // toster  este pentru alerte eroare

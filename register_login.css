@@ -270,6 +270,17 @@ th,td{
 .btn-container-viewFlat{
   display: none;
 }
+/* containerul pentru vizualizarea apartamente */
 .viewFlat-container{
   display: none;
+}
+/* containerul cu profilul */
+.myProfil-container{
+  display: none;
+  
+}
+.data-table-profil{
+  width: 60%;
+  margin:30px auto;
+border-collapse: collapse;
 }

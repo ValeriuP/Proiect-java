@@ -22,7 +22,7 @@
             </div>
             <div class="btn-container-viewFlat" id="btn_container_viewFlat">
               <button class="btn-home" id="add_new" onclick="addNew()">Add new flat</button>
-              <button class="btn-home" id="btn_see_property" onclick="seeProperty()">Se property</button>
+              <button class="btn-home" id="btn_see_property" onclick="viewFlat()">Se property</button>
               <button class="btn-home" id="btn_favorites" onclick="favorites()">favorites</button>
               
           </div>
@@ -114,7 +114,6 @@
     </div>
     
       <div class="viewFlat-container" id="view_flat_container">
-        <div class="content">
           <table class="shifts-table" id="data_table">
               <thead>
                   <tr>
@@ -136,8 +135,7 @@
           </table>
       </div>
     
-    <div class="myProfil-container">
-      <div class="content">
+    <div class="myProfil-container" id="myProfil_container">
         <table class="data-table-profil" id="data_table_profil">
             <thead>
                 <tr>
