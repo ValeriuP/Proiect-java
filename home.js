@@ -127,7 +127,8 @@ form.addEventListener("submit",(e)=>{
             yearBuilt.value="";
             rentPrice.value="";
             dateAvailabe.value="";
-           return true
+           
+            
         }
 
         alert("ceva nu e bine")
@@ -209,33 +210,48 @@ function deleteRow(row){
     
     const rowIndex=row.parentNode.parentNode.rowIndex -1;
     dataTable.deleteRow(rowIndex);
+    
     saveData()
     
 }
 // functia de salvare apartamente
 function saveData(){
-    // const dataValue=[];
-    let
-    
-
-    for(i=0;i<dataTable.rows.length;i++){
-        const row=dataTable.rows[i];
-        const rowData={
-            city:row.cells[0].textContent,
-            streedName:row.cells[1].textContent,
-            streedNr:row.cells[2].textContent,
-            areaSizi:row.cells[3].textContent,
-            acYes:row.cells[4].textContent,
-            yearBuilt:row.cells[5].textContent,
-            rentPrice:row.cells[6].textContent,
-            dateAvailabe:row.cells[7].textContent,
-            
-
+    let apartament=new Apartament;
+        
+    let logedUser=JSON.parse(localStorage.getItem("userSave")) || [];
+    let allUser=JSON.parse(localStorage.getItem("users-1")) || [];
+    if(logedUser && allUser){
+        for (let user of allUser){
+            if (user.email===logedUser.email){
+                user.apartament.push(apartament)
+            }
         }
-        apartament.push(rowData);
+        localStorage.setItem("users-1",JSON.stringify(allUser));
+        return true
 
     }
-    localStorage.setItem("userSave",JSON.stringify(apartament));
+    // const dataValue=[];
+    // let
+    
+
+    // for(i=0;i<dataTable.rows.length;i++){
+    //     const row=dataTable.rows[i];
+    //     const rowData={
+    //         city:row.cells[0].textContent,
+    //         streedName:row.cells[1].textContent,
+    //         streedNr:row.cells[2].textContent,
+    //         areaSizi:row.cells[3].textContent,
+    //         acYes:row.cells[4].textContent,
+    //         yearBuilt:row.cells[5].textContent,
+    //         rentPrice:row.cells[6].textContent,
+    //         dateAvailabe:row.cells[7].textContent,
+            
+
+    //     }
+    //     apartament.push(rowData);
+
+    // }
+    // localStorage.setItem("userSave",JSON.stringify(apartament));
 
 
 }
@@ -252,13 +268,26 @@ function myProfil() {
     let showLastName=document.getElementById("show_last_name");
     let showemail=document.getElementById("show_email");
     let showBirth=document.getElementById("show_birth");
+    let showpassword=document.getElementById("show_password");
+
      
 
     showFirstName.innerText=`First Name,${curentUser.firstName}`;
     showLastName.innerText=`Last Name,${curentUser.lestName}`;
     showemail.innerText=`Email,${curentUser.email}`;
     showBirth.innerText=`Birth Date,${curentUser.birthDate}`;
+    showpassword.innerText=`Password,${curentUser.password}`;
 
+     let newName=document.getElementById("new_name");
+     let newLastName=document.getElementById("new_last_name");
+     let newBirth=document.getElementById("new_birth");
+     let newPassword=document.getElementById("new_password");
+     let newConfirmPassword=document.getElementById("new_confirm_password");
+ 
+  
+}
+function saveNew(){
+        
 }
 
 // functia care salveaza apartamentele favorite

@@ -136,36 +136,33 @@
       </div>
     
     <div class="myProfil-container" id="myProfil_container">
-        <!-- <table class="data-table-profil" id="data_table_profil">
-            <thead>
-                <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>email</th>
-                    <th>Birth Date</th>
-                    <th>Password</th>
-                    
-                </tr>
-            </thead>
-            <tbody>
-                aici o sa apara datele apartamentelor
-            </tbody>
-        </table> -->
+        
         <div class="detail-user" id="detail_user">
           <p class="show-detail" id="show_name"></p>
+          <input type="newname" name="newname" id="new_name" placeholder="you want to change the first name ?">
         </div>
         <div class="detail-user" >
           <p class="show-last-name" id="show_last_name"></p>
+          <input type="newlastname" name="newlastname" id="new_last_name" placeholder="you want to change the lest name ?">
         </div>
         <div class="detail-user">
           <p class="show-email" id="show_email"></p>
+          
         </div>
         <div class="detail-user">
           <p class="show-birrth" id="show_birth"></p>
+          <input type="newbirth" name="newbirth" id="new_birth" placeholder="you want to change the birth data ?">
         </div>
         <div class="detail-user">
-          <input type="text" name="changePassword" id="change_password" placeholder="enter the new password">
+          <p class="show-password" id="show_password"></p>
+          <input type="newpassword" name="newpassword" id="new_password" placeholder="you want to change the password ?">
         </div>
+        <div class="detail-user">
+          <input type="newconfirmpassword" class="newconfirmpassword" id="new_confirm_password" placeholder="confirm the new password">
+        </div>
+        <button class="btn-new" id="btn_new_yes" onclick="saveNew()">Save</button>
+        <button class="btn-new" id="btn_new_no" onclick="noSave()">No</button>
+        
 
     </div>
     </main>
