@@ -117,45 +117,7 @@ function validateBirthDate(input){
     }
     return false
     }
-    // verificare varsta    NU FUNCTIONEAZA
-    // function validateBirthDate(input){
-    //     let birthDate=new Date(input.value);
-    //     let today=new Date();
-    //     let age=today.getFullYear() - birthDate.getFullYear();
-    //     let monthDifference = today.getMonth() - birthDate.getMonth();
-      
-    //     if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
-    //         age--
-    //     }
-    //     console.log(age)
-    //     if(age<18) {
-    //         setError(birthDate, "You must be at least 18 year")
-    //         input.style.borderColor = "red"
-    //         result=false;
-    //     }
-    //     else{
-    //         setError.textContend ="";
-    //     }
     
-    // }
-    // const enteredValue = new Date('<%=ui_txtDOB.ClientID %>');;
-    // const enteredAge = new Date(enteredValue.value);
-    // if( enteredAge > 18 ) {
-    //     alert("DOB not valid");
-    //     enteredValue.focus();
-    //     result= false;
-    //     console.log(salut)
-    // }
-    // function validateBirthDate(DOB) {
-    //     let today = new Date();
-    //     let birthDate = new Date(DOB);
-    //     let age = today.getFullYear() - birthDate.getFullYear();
-    //     let m = today.getMonth() - birthDate.getMonth();
-    //     if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-    //         age--;
-    //     }    
-    //     return age;
-    // }
 
 // functia care trimite eroarea
 function setError(element,message){

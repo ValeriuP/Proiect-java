@@ -1,5 +1,5 @@
 const storedData=JSON.parse(localStorage.getItem("userSave"));
-const userName=document.getElementById("user_name");
+let userName=document.getElementById("user_name");
 
 userName.innerText=`Hello,${storedData.firstName } ${storedData.lestName}`;
 
@@ -14,6 +14,8 @@ const acYes=document.getElementById("ac_value");
 const yearBuilt=document.getElementById("year_built");
 const rentPrice=document.getElementById("rent_price");
 const dateAvailabe=document.getElementById("date_availabe");
+const dataTable=document.getElementById("data_table").getElementsByTagName("tbody")[0];
+
 
 const email=document.getElementById("email");
 const password=document.getElementById("password");
@@ -117,6 +119,7 @@ form.addEventListener("submit",(e)=>{
                 }
             }
             localStorage.setItem("users-1",JSON.stringify(allUser));
+            // sterge valorile scrise in inputuri
             city.value="";
             streedName.value="";
             streedNr.value="";
@@ -160,10 +163,18 @@ function viewFlat(){
     profile.style.display="none";
     const dataTable=document.getElementById("data_table").getElementsByTagName("tbody")[0];  
     let storedData=JSON.parse(localStorage.getItem("users-1")) || [];
-    let apartaments;
+    let apartaments=[];
     const user=JSON.parse(localStorage.getItem("userSave")) || [];
-    apartaments=storedData.find(x=>x.email=user.email).apartament;
-    // console.log(apartaments)
+    // apartaments=storedData.find(x=>x.email=user.email).apartament;
+for (let User of storedData)
+    {
+        if(User.email===user.email)
+            {
+                apartaments=User.apartament;
+            }
+    }
+
+   
     if(dataTable.childElementCount==0){
         apartaments.forEach(rowData=>{
     
@@ -193,26 +204,39 @@ function viewFlat(){
      })}
     }
 // functia de sters din tabelul cu apartamente
+
 function deleteRow(row){
+    
     const rowIndex=row.parentNode.parentNode.rowIndex -1;
     dataTable.deleteRow(rowIndex);
     saveData()
     
-    // functia de salvare apartamente
 }
+// functia de salvare apartamente
 function saveData(){
-    const dataValue=[];
+    // const dataValue=[];
+    let
+    
+
     for(i=0;i<dataTable.rows.length;i++){
         const row=dataTable.rows[i];
         const rowData={
-            hours:row.cells[0].textContent,
-            location:row.cells[1].textContent
+            city:row.cells[0].textContent,
+            streedName:row.cells[1].textContent,
+            streedNr:row.cells[2].textContent,
+            areaSizi:row.cells[3].textContent,
+            acYes:row.cells[4].textContent,
+            yearBuilt:row.cells[5].textContent,
+            rentPrice:row.cells[6].textContent,
+            dateAvailabe:row.cells[7].textContent,
+            
 
         }
-        dataValue.push(rowData);
+        apartament.push(rowData);
 
     }
-    localStorage.setItem("dataTableValue",JSON.stringify(dataValue));
+    localStorage.setItem("userSave",JSON.stringify(apartament));
+
 
 }
 // functia de vizualizare profilul utilizatorului
@@ -222,29 +246,34 @@ function myProfil() {
     viewFlatBtn.style.display="none";
     addNewBtn.style.display="flex";
     profile.style.display="flex";
-    const dataTableProfil=document.getElementById("data_table_profil").getElementsByTagName("tbody")[0];
-    let dataProfil=JSON.parse(localStorage.getItem("userSave"));
+   
+    let curentUser=JSON.parse(localStorage.getItem("userSave"));
+    let showFirstName=document.getElementById("show_name");
+    let showLastName=document.getElementById("show_last_name");
+    let showemail=document.getElementById("show_email");
+    let showBirth=document.getElementById("show_birth");
+     
 
-    let profil;
-    profil=dataProfil
-    if(dataTableProfil.childElementCount==0){
-        profil.forEach(rowData=>{
-            const newRow=dataTableProfil.insertRow();
-            const firstNameCell=newRow.insertCell(0);
-            const lastNameCell=newRow.insertCell(1);
-            const emailCell=newRow.insertCell(2);
-            const birthDateCell=newRow.insertCell(3);
-            const changepasswordCell=newRow.insertCell(4);
-             
-            firstNameCell.textContent=rowData.firstName;
-            lastNameCell.textContent=newRow.lastName;
-            emailCell.textContent=newRow.email;
-            birthDateCell.textContent=newRow.birthDate;
+    showFirstName.innerText=`First Name,${curentUser.firstName}`;
+    showLastName.innerText=`Last Name,${curentUser.lestName}`;
+    showemail.innerText=`Email,${curentUser.email}`;
+    showBirth.innerText=`Birth Date,${curentUser.birthDate}`;
 
-            changepasswordCell.innerHTML=`input class="changepassword-imp" onclik="changepassword(this)">Change Password,/input>`;
+}
 
-        })
-    }
+// functia care salveaza apartamentele favorite
+function favorites(row){
+    let favoritApartament=[];
+    let apartament=new Apartament(city.value,streedName.value,streedNr.value,areaSizi.value,acYes.value,yearBuilt.value,rentPrice.value,dateAvailabe.value);
+    localStorage.setItem("keyName","keyValue");
+    const favApart=localStorage.getItem("keyName");
+    favoritApartament.push(apartament[1]);
+    // console.log(favoritApartament);
+    // console.log(localStorage.favoritApartament);
+    localStorage.setItem("favoritApartament",JSON.stringify(favoritApartament));
+    storedApartamentFavorit=JSON.parse(localStorage.getItem("favoritApartament"));
+
+
 }
 
 // toster  este pentru alerte eroare

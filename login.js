@@ -1,7 +1,7 @@
 const form=document.querySelector("form")
 const email=document.getElementById("email");
 const password = document.getElementById("password");
-
+// functia de verificare si validare user
 function validateImputs(){
     const emailVal=email.value;
     const passwordVal=password.value;
@@ -30,10 +30,7 @@ form.addEventListener("submit", (e)=>{
   
   window.location.href="home.html"
   }
-  //   window.location.href="home.html"
-  // }
-  // else {
-  //   // mesaj eroare si stergem textul din campul din input
+  
     
 
   

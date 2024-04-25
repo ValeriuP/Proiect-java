@@ -277,10 +277,25 @@ th,td{
 /* containerul cu profilul */
 .myProfil-container{
   display: none;
-  
+  flex-direction: column;
+ 
+    margin: 2vh auto 0 auto;
+    backdrop-filter: blur(20px);
+    border-radius: 5px;
+    padding: 10px;
+    border: solid 1px rgb(75, 75, 244);
 }
 .data-table-profil{
   width: 60%;
   margin:30px auto;
 border-collapse: collapse;
+}
+.detail-user{
+  width: 370px;
+  height: 50px;
+  
+  backdrop-filter: blur(3px);
+  background-color: rgb(189 211 219 /25%);
+  color: white;
+  font-size: 25px;
 }
