@@ -118,7 +118,9 @@ form.addEventListener("submit",(e)=>{
                     user.apartament.push(apartament)
                 }
             }
+            console.log(allUser)
             localStorage.setItem("users-1",JSON.stringify(allUser));
+            
             // sterge valorile scrise in inputuri
             city.value="";
             streedName.value="";
@@ -130,12 +132,13 @@ form.addEventListener("submit",(e)=>{
            
             
         }
-
-        alert("ceva nu e bine")
-        toastr["error"]("Something is not right !");
-       
+        // alert("ceva nu e bine")  
     }
-    
+    else{
+       
+       return toastr["error"]("Something is not right !");
+    }
+   
     
 })
 
@@ -214,6 +217,20 @@ function deleteRow(row){
     saveData()
     
 }
+// function deleteRow(apartamentId){
+//     let curentUser=JSON.parse(localStorage.getItem("userSave")) || [];
+//     let loginInfo=JSON.parse(localStorage.getItem("user-1"));
+//     let curentUserInfo=loginInfo.find((x) => x.email ==curentUser);
+//     if(curentUserInfo){
+//         let index = curentUserInfo.apartament.findIndex((apartament) => apartament.apartamentId ==apartamentId);
+//         if(index != -1){
+//             curentUserInfo.apartament.splice(index,1);
+//             localStorage.setItem("loginInfo",JSON.stringify(user-1));
+//             return true
+//         }
+//         return false
+//     }
+// }
 // functia de salvare apartamente
 function saveData(){
     let apartament=new Apartament;
@@ -226,10 +243,27 @@ function saveData(){
                 user.apartament.push(apartament)
             }
         }
+        console.log(allUser)
         localStorage.setItem("users-1",JSON.stringify(allUser));
         return true
 
     }
+    // function deleteRowFromTable(row) {
+    //     // Obține indexul rândului pe care vrei să-l ștergi
+    //     let rowIndex = row.rowIndex;
+    
+    //     // Obține datele din local storage
+    //     let flats = JSON.parse(localStorage.getItem("flats")) || [];
+    
+    //     // Șterge rândul corespunzător din array-ul de date
+    //     flats.splice(rowIndex - 1, 1);
+    
+    //     // Actualizează conținutul din local storage
+    //     localStorage.setItem("flats", JSON.stringify(flats));
+    
+    //     // Elimină rândul din tabel
+    //     row.remove();
+    // }
     // const dataValue=[];
     // let
     

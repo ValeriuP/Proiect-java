@@ -125,8 +125,8 @@
                       <th>Year Built</th>
                       <th>Rent Price</th>
                       <th>Data Availabe</th>
-                      <th>Favorites</th>
                       <th>Delete</th>
+                      <th>Favorite</th>
                   </tr>
               </thead>
               <tbody>
@@ -139,26 +139,27 @@
         
         <div class="detail-user" id="detail_user">
           <p class="show-detail" id="show_name"></p>
-          <input type="newname" name="newname" id="new_name" placeholder="you want to change the first name ?">
+          <input type="newname" class="show-detali-input" id="new_name" placeholder="you want to change the first name ?">
         </div>
         <div class="detail-user" >
-          <p class="show-last-name" id="show_last_name"></p>
-          <input type="newlastname" name="newlastname" id="new_last_name" placeholder="you want to change the lest name ?">
+          <p class="show-detail" id="show_last_name"></p>
+          <input type="newlastname" class="show-detali-input" id="new_last_name" placeholder="you want to change the lest name ?">
         </div>
         <div class="detail-user">
-          <p class="show-email" id="show_email"></p>
+          <p class="show-detail" id="show_email"></p>
           
         </div>
         <div class="detail-user">
-          <p class="show-birrth" id="show_birth"></p>
-          <input type="newbirth" name="newbirth" id="new_birth" placeholder="you want to change the birth data ?">
+          <p class="show-detail" id="show_birth"></p>
+          <input type="newbirth" class="show-detali-input" id="new_birth" placeholder="you want to change the birth data ?">
         </div>
         <div class="detail-user">
-          <p class="show-password" id="show_password"></p>
-          <input type="newpassword" name="newpassword" id="new_password" placeholder="you want to change the password ?">
+          <p class="show-detail" id="show_password"></p>
+          <input type="newpassword" class="show-detali-input" id="new_password" placeholder="you want to change the password ?">
         </div>
         <div class="detail-user">
-          <input type="newconfirmpassword" class="newconfirmpassword" id="new_confirm_password" placeholder="confirm the new password">
+          <p class="show-detail" id="confirm_password">Confirm the new password</p>
+          <input type="newconfirmpassword" class="show-detali-input" id="new_confirm_password" placeholder="confirm the new password">
         </div>
         <button class="btn-new" id="btn_new_yes" onclick="saveNew()">Save</button>
         <button class="btn-new" id="btn_new_no" onclick="noSave()">No</button>
