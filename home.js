@@ -109,12 +109,16 @@ form.addEventListener("submit",(e)=>{
     }
     if(result){
     let apartament=new Apartament(city.value,streedName.value,streedNr.value,areaSizi.value,acYes.value,yearBuilt.value,rentPrice.value,dateAvailabe.value);
-        
+     const keys=JSON.parse(localStorage.getItem("userSave")) ;
         let logedUser=JSON.parse(localStorage.getItem("userSave")) || [];
         let allUser=JSON.parse(localStorage.getItem("users-1")) || [];
         if(logedUser && allUser){
             for (let user of allUser){
                 if (user.email===logedUser.email){
+                    // generare de id
+                    localStorage.setItem(keys.newId,0);
+                    let id =localStorage.getItem(keys.newId,++id);
+                
                     user.apartament.push(apartament)
                 }
             }
@@ -141,6 +145,9 @@ form.addEventListener("submit",(e)=>{
    
     
 })
+function generateId(){
+   
+}
 
 
 
