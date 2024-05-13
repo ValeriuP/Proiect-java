@@ -108,17 +108,32 @@ form.addEventListener("submit",(e)=>{
         errorDataAvaible.innerText="";
     }
     if(result){
-    let apartament=new Apartament(city.value,streedName.value,streedNr.value,areaSizi.value,acYes.value,yearBuilt.value,rentPrice.value,dateAvailabe.value);
-     const keys=JSON.parse(localStorage.getItem("userSave")) ;
+        let newId=Date.now()
+    let apartament=new Apartament(newId,city.value,streedName.value,streedNr.value,areaSizi.value,acYes.value,yearBuilt.value,rentPrice.value,dateAvailabe.value);
+    
         let logedUser=JSON.parse(localStorage.getItem("userSave")) || [];
         let allUser=JSON.parse(localStorage.getItem("users-1")) || [];
         if(logedUser && allUser){
             for (let user of allUser){
                 if (user.email===logedUser.email){
+                    
+                  
+                    // let id = localStorage.getItem(apartament);
+                    // localStorage.getItem(id===null);
+                    // localStorage.setItem(id=0);
+                    // console.log(id)
+                    // id.push(apartament)
+                //    user.id.push(apartament);
+
+                    // let newId=JSON.parse(localStorage.getItem("user-1"));
+                    // let id=JSON.parse(localStorage.getItem("apartament"));
+                    
+                    // let newId=allUser[allUser.id];
+                    
                     // generare de id
-                    localStorage.setItem(keys.newId,0);
-                    let id =localStorage.getItem(keys.newId,++id);
-                
+                    // localStorage.setItem(keys.newId,0);
+                    // let id =localStorage.getItem(KEYS.newId,++id);
+                    
                     user.apartament.push(apartament)
                 }
             }
@@ -145,15 +160,10 @@ form.addEventListener("submit",(e)=>{
    
     
 })
-function generateId(){
-   
-}
-
-
-
 // constructor de date
 class Apartament{
-    constructor(city,streedName,streedNr,areaSizi,acYes,yearBuilt,rentPrice,dateAvailabe){
+    constructor(id,city,streedName,streedNr,areaSizi,acYes,yearBuilt,rentPrice,dateAvailabe,favorite=false){
+        this.id=id
         this.city=city;
         this.streedName=streedName;
         this.streedNr=streedNr;
@@ -162,6 +172,7 @@ class Apartament{
         this.yearBuilt=yearBuilt;
         this.rentPrice=rentPrice;
         this.dateAvailabe=dateAvailabe
+        this.favorite=favorite;
     }
     
 }
@@ -210,54 +221,111 @@ for (let User of storedData)
     rentPriceCell.textContent=rowData.rentPrice;
     dateAvailabeCell.textContent=rowData.dateAvailabe;
 
-    deleteCell.innerHTML=`<button class="delet-btn" onclick="deleteRow(this)">Delete</button>`;
-    favoritesApart.innerHTML=`<button class="favorites-btn" onclick="favorites(this)">Favorites</button>`
+    deleteCell.innerHTML=`<button class="delet-btn" _id=${rowData.id} onclick="deleteRow(this)">Delete</button>`;
+    favoritesApart.innerHTML=`<button class="favorites-btn" _id=${rowData.id} onclick="favorites(this)">Favorites</button>`
      })}
     }
+
+    //  functia care afiseaza ap. favorite
+  function viewFavorites(){
+    viewFlatContainer.style.display="flex";
+    addNewBtn.style.display="none";
+    viewFlatBtn.style.display=("flex");
+    addnew.style.display="none";
+    profile.style.display="none";
+
+    const dataTable=document.getElementById("data_table").getElementsByTagName("tbody")[0];  
+    let storedData=JSON.parse(localStorage.getItem("users-1")) || [];
+    let apartaments=[];
+    const user=JSON.parse(localStorage.getItem("userSave")) || [];
+    // apartaments=storedData.find(x=>x.email=user.email).apartament;
+for (let User of storedData)
+    {
+        if(User.email===user.email)
+            {
+                apartaments=User.apartament;
+            }
+    }
+
+   
+    if(dataTable.childElementCount==0){
+        apartaments.forEach(rowData=>{
+    
+    const newRow=dataTable.insertRow();
+    const cityCell=newRow.insertCell(0);
+    const streedNameCell=newRow.insertCell(1);
+    const streedNrCell=newRow.insertCell(2);
+    const areaSiziCell=newRow.insertCell(3);
+    const acYesCell=newRow.insertCell(4);
+    const yearBuiltCell=newRow.insertCell(5);
+    const rentPriceCell=newRow.insertCell(6);
+    const dateAvailabeCell=newRow.insertCell(7)
+    const deleteCell=newRow.insertCell(8);
+    const favoritesApart=newRow.insertCell(9)
+
+    cityCell.textContent=rowData.city;
+    streedNameCell.textContent=rowData.streedName;
+    streedNrCell.textContent=rowData.streedName;
+    areaSiziCell.textContent=rowData.areaSizi;
+    acYesCell.textContent=rowData.acYes;
+    yearBuiltCell.textContent=rowData.yearBuilt;
+    rentPriceCell.textContent=rowData.rentPrice;
+    dateAvailabeCell.textContent=rowData.dateAvailabe;
+
+    deleteCell.innerHTML=`<button class="delet-btn" _id=${rowData.id} onclick="deleteRow(this)">Delete</button>`;
+    favoritesApart.innerHTML=`<button class="favorites-btn" _id=${rowData.id} onclick="favorites(this)">Favorites</button>`
+     })}
+
+  }
+
 // functia de sters din tabelul cu apartamente
 
-// function deleteRow(row){
-    
-//     const rowIndex=row.parentNode.parentNode.rowIndex -1;
-//     dataTable.deleteRow(rowIndex);
-    
-//     saveData()
     function deleteRow(row) {
-        // Obține indexul rândului pe care vrei să-l ștergi
-        let rowIndex = row.rowIndex;
-    
-        // Obține datele din local storage
-        let apartament = JSON.parse(localStorage.getItem("users-1")) || [];
-      console.log(apartament);
-      console.log(row)
-        // Șterge rândul corespunzător din array-ul de date
-        // apartament.splice(rowIndex - 1, 1);
-    
-        // Actualizează conținutul din local storage
-        // localStorage.setItem("users-1", JSON.stringify(apartament));
-        // saveData()
-    
-        // Elimină rândul din tabel
-        // row.remove();
+      let _id=row.getAttribute('_id');
+        const rowIndex=row.parentNode.parentNode.rowIndex -1;
+        dataTable.deleteRow(rowIndex);
+        let storedData=JSON.parse(localStorage.getItem("users-1")) || [];
+     const user=JSON.parse(localStorage.getItem("userSave")) || [];
+        for (let User of storedData)
+            {
+                if(User.email===user.email)
+                    {
+                        alert("Do you want to delet?")
+                       User.apartament=User.apartament.filter(ap=>ap.id!=_id);
+                    }
+            }
+            localStorage.setItem("users-1",JSON.stringify(storedData));
     }
+
+    function favorites(row){
+        let _id=row.getAttribute('_id');
+            // O sa coloram cumva butonul ala 
+
+        let storedData=JSON.parse(localStorage.getItem("users-1")) || [];
+        const user=JSON.parse(localStorage.getItem("userSave")) || [];
+        for (let User of storedData)
+            {
+                if(User.email===user.email)
+                    {
+                        
+                       for(let ap of User.apartament)
+                        {
+                            if(ap.id==_id)
+                                {
+                                    ap.favorite= !ap.favorite;
+                                }
+                        }
+                    }
+            }
+            localStorage.setItem("users-1",JSON.stringify(storedData));
+
+
+    }
+
     
     
 
-// function deleteRow(apartamentId){
-//     let curentUser=JSON.parse(localStorage.getItem("userSave")) || [];
-//     let loginInfo=JSON.parse(localStorage.getItem("user-1"));
-//     let curentUserInfo=loginInfo.find((x) => x.email ==curentUser);
-//     if(curentUserInfo){
-//         let index = curentUserInfo.apartament.findIndex((apartament) => apartament.apartamentId ==apartamentId);
-//         if(index != -1){
-//             curentUserInfo.apartament.splice(index,1);
-//             localStorage.setItem("loginInfo",JSON.stringify(user-1));
-//             return true
-//         }
-//         return false
-//     }
-// }
-// functia de salvare apartamente
+
 function saveData(){
     let apartament=new Apartament;
         
@@ -351,19 +419,19 @@ function saveNew(){
 }
 
 // functia care salveaza apartamentele favorite
-function favorites(row){
-    let favoritApartament=[];
-    let apartament=new Apartament(city.value,streedName.value,streedNr.value,areaSizi.value,acYes.value,yearBuilt.value,rentPrice.value,dateAvailabe.value);
-    localStorage.setItem("keyName","keyValue");
-    const favApart=localStorage.getItem("keyName");
-    favoritApartament.push(apartament[1]);
-    // console.log(favoritApartament);
-    // console.log(localStorage.favoritApartament);
-    localStorage.setItem("favoritApartament",JSON.stringify(favoritApartament));
-    storedApartamentFavorit=JSON.parse(localStorage.getItem("favoritApartament"));
+// function favorites(row){
+//     let favoritApartament=[];
+//     let apartament=new Apartament(id,city.value,streedName.value,streedNr.value,areaSizi.value,acYes.value,yearBuilt.value,rentPrice.value,dateAvailabe.value);
+//     localStorage.setItem("keyName","keyValue");
+//     const favApart=localStorage.getItem("keyName");
+//     favoritApartament.push(apartament[1]);
+//     // console.log(favoritApartament);
+//     // console.log(localStorage.favoritApartament);
+//     localStorage.setItem("favoritApartament",JSON.stringify(favoritApartament));
+//     storedApartamentFavorit=JSON.parse(localStorage.getItem("favoritApartament"));
 
 
-}
+// }
 
 // toster  este pentru alerte eroare
 toastr.options = {
