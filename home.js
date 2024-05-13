@@ -118,7 +118,7 @@ form.addEventListener("submit",(e)=>{
                     user.apartament.push(apartament)
                 }
             }
-            console.log(allUser)
+            // console.log(allUser)
             localStorage.setItem("users-1",JSON.stringify(allUser));
             
             // sterge valorile scrise in inputuri
@@ -209,14 +209,33 @@ for (let User of storedData)
     }
 // functia de sters din tabelul cu apartamente
 
-function deleteRow(row){
+// function deleteRow(row){
     
-    const rowIndex=row.parentNode.parentNode.rowIndex -1;
-    dataTable.deleteRow(rowIndex);
+//     const rowIndex=row.parentNode.parentNode.rowIndex -1;
+//     dataTable.deleteRow(rowIndex);
     
-    saveData()
+//     saveData()
+    function deleteRow(row) {
+        // Obține indexul rândului pe care vrei să-l ștergi
+        let rowIndex = row.rowIndex;
     
-}
+        // Obține datele din local storage
+        let apartament = JSON.parse(localStorage.getItem("users-1")) || [];
+      console.log(apartament);
+      console.log(row)
+        // Șterge rândul corespunzător din array-ul de date
+        // apartament.splice(rowIndex - 1, 1);
+    
+        // Actualizează conținutul din local storage
+        // localStorage.setItem("users-1", JSON.stringify(apartament));
+        // saveData()
+    
+        // Elimină rândul din tabel
+        // row.remove();
+    }
+    
+    
+
 // function deleteRow(apartamentId){
 //     let curentUser=JSON.parse(localStorage.getItem("userSave")) || [];
 //     let loginInfo=JSON.parse(localStorage.getItem("user-1"));
