@@ -116,23 +116,7 @@ form.addEventListener("submit",(e)=>{
         if(logedUser && allUser){
             for (let user of allUser){
                 if (user.email===logedUser.email){
-                    
-                  
-                    // let id = localStorage.getItem(apartament);
-                    // localStorage.getItem(id===null);
-                    // localStorage.setItem(id=0);
-                    // console.log(id)
-                    // id.push(apartament)
-                //    user.id.push(apartament);
-
-                    // let newId=JSON.parse(localStorage.getItem("user-1"));
-                    // let id=JSON.parse(localStorage.getItem("apartament"));
-                    
-                    // let newId=allUser[allUser.id];
-                    
-                    // generare de id
-                    // localStorage.setItem(keys.newId,0);
-                    // let id =localStorage.getItem(KEYS.newId,++id);
+               
                     
                     user.apartament.push(apartament)
                 }
@@ -326,63 +310,25 @@ for (let User of storedData)
     
 
 
-function saveData(){
-    let apartament=new Apartament;
+// function saveData(){
+//     let apartament=new Apartament;
         
-    let logedUser=JSON.parse(localStorage.getItem("userSave")) || [];
-    let allUser=JSON.parse(localStorage.getItem("users-1")) || [];
-    if(logedUser && allUser){
-        for (let user of allUser){
-            if (user.email===logedUser.email){
-                user.apartament.push(apartament)
-            }
-        }
-        console.log(allUser)
-        localStorage.setItem("users-1",JSON.stringify(allUser));
-        return true
+//     let logedUser=JSON.parse(localStorage.getItem("userSave")) || [];
+//     let allUser=JSON.parse(localStorage.getItem("users-1")) || [];
+//     if(logedUser && allUser){
+//         for (let user of allUser){
+//             if (user.email===logedUser.email){
+//                 user.apartament.push(apartament)
+//             }
+//         }
+//         console.log(allUser)
+//         localStorage.setItem("users-1",JSON.stringify(allUser));
+//         return true
 
-    }
-    // function deleteRowFromTable(row) {
-    //     // Obține indexul rândului pe care vrei să-l ștergi
-    //     let rowIndex = row.rowIndex;
-    
-    //     // Obține datele din local storage
-    //     let flats = JSON.parse(localStorage.getItem("flats")) || [];
-    
-    //     // Șterge rândul corespunzător din array-ul de date
-    //     flats.splice(rowIndex - 1, 1);
-    
-    //     // Actualizează conținutul din local storage
-    //     localStorage.setItem("flats", JSON.stringify(flats));
-    
-    //     // Elimină rândul din tabel
-    //     row.remove();
-    // }
-    // const dataValue=[];
-    // let
+//     }
     
 
-    // for(i=0;i<dataTable.rows.length;i++){
-    //     const row=dataTable.rows[i];
-    //     const rowData={
-    //         city:row.cells[0].textContent,
-    //         streedName:row.cells[1].textContent,
-    //         streedNr:row.cells[2].textContent,
-    //         areaSizi:row.cells[3].textContent,
-    //         acYes:row.cells[4].textContent,
-    //         yearBuilt:row.cells[5].textContent,
-    //         rentPrice:row.cells[6].textContent,
-    //         dateAvailabe:row.cells[7].textContent,
-            
-
-    //     }
-    //     apartament.push(rowData);
-
-    // }
-    // localStorage.setItem("userSave",JSON.stringify(apartament));
-
-
-}
+// }
 // functia de vizualizare profilul utilizatorului
 function myProfil() {
     addnew.style.display="none";
@@ -406,16 +352,26 @@ function myProfil() {
     showBirth.innerText=`Birth Date,${curentUser.birthDate}`;
     showpassword.innerText=`Password,${curentUser.password}`;
 
-     let newName=document.getElementById("new_name");
-     let newLastName=document.getElementById("new_last_name");
-     let newBirth=document.getElementById("new_birth");
-     let newPassword=document.getElementById("new_password");
-     let newConfirmPassword=document.getElementById("new_confirm_password");
- 
+    
   
 }
 function saveNew(){
+    let newName=document.getElementById("new_name");
+    let newLastName=document.getElementById("new_last_name");
+    let newBirth=document.getElementById("new_birth");
+    let newPassword=document.getElementById("new_password");
+    let newConfirmPassword=document.getElementById("new_confirm_password");
+
+    // salvare date noi user
+    const newData=JSON.parse(localStorage.getItem("user-1"));
+    let results=true;
+
         
+        let newStocare=localStorage.setItem("userSave",JSON.stringify(newData));
+        window.location.href="home.html"
+    
+    
+
 }
 
 // functia care salveaza apartamentele favorite

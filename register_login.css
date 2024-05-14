@@ -298,28 +298,35 @@ border-collapse: collapse;
   backdrop-filter: blur(3px);
   background-color: rgb(189 211 219 /25%);
   color: white;
-  font-size: 25px;
+  font-size: 20px;
+  justify-content: space-between;
 }
 .myProfil-container{
   margin: 2vh auto 0 auto;
     backdrop-filter: blur(20px);
     border-radius: 5px;
     padding: 10px;
+    position: absolute;
+    top: 25%;
+    left: 25%;
 }
-.newname.input{
+.newname input{
   border-radius: 10px;
     font: size 15px;
     padding: 5px;
     border:1px solid red ;
-    /* se face transparent */
+
     backdrop-filter: blur(3px);
     background-color: rgb(189 211 219 /25%);
     color: white;
-}
+} */
+
 .show-detail{
   width: 250px;
 }
 .show-detali-input{
+  width: 220px;
+  height: 45px;
   border-radius: 10px;
   font: size 15px;
   padding: 5px;
