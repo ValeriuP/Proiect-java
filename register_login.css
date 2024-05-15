@@ -336,3 +336,6 @@ border-collapse: collapse;
   background-color: rgb(189 211 219 /25%);
   color: white;
 }
+.favorites-btn{
+  border-radius: 10px;
+}
