@@ -339,3 +339,41 @@ border-collapse: collapse;
 .favorites-btn{
   border-radius: 10px;
 }
+@media only screen and (max-width:820px){
+  .main{
+    display: flex;
+    flex-direction: column;
+  }
+  .navbar{
+    height: 125px;
+  }
+  .btn-container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+  }
+  .btn-home{
+    margin-top: 5px;
+  }
+  .heloo-mesage{
+    margin-top: 20px;
+  }
+  .head-btn-login{
+    margin-top: 20px;
+  }
+  .btn-container-viewFlat{
+    /* display: flex; */
+    flex-direction: column;
+    margin-top: 20px;
+  }
+  .myProfil-container{
+    left: 0;
+  }
+  .detail-user{
+    width: auto;
+  }
+  .container{
+    font-size: 14px;
+  }
+}
+  

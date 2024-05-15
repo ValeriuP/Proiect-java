@@ -180,7 +180,7 @@ for (let User of storedData)
             }
     }
 
-   
+    dataTable.innerHTML="";
     if(dataTable.childElementCount==0){
         apartaments.forEach(rowData=>{
     
@@ -206,7 +206,7 @@ for (let User of storedData)
     dateAvailabeCell.textContent=rowData.dateAvailabe;
 
     deleteCell.innerHTML=`<button class="delet-btn" _id=${rowData.id} onclick="deleteRow(this)">Delete</button>`;
-    favoritesApart.innerHTML=`<button class="favorites-btn" _id=${rowData.id} onclick="favorites(this)">Favorites</button>`
+    favoritesApart.innerHTML=`<button class="favorites-btn" id="favorites_btn" _id=${rowData.id} onclick="favorites(this)">Favorites</button>`
      })}
     }
 
@@ -217,6 +217,7 @@ for (let User of storedData)
     viewFlatBtn.style.display=("flex");
     addnew.style.display="none";
     profile.style.display="none";
+    
 
     const dataTable=document.getElementById("data_table").getElementsByTagName("tbody")[0];  
     let storedData=JSON.parse(localStorage.getItem("users-1")) || [];
@@ -227,11 +228,11 @@ for (let User of storedData)
     {
         if(User.email===user.email)
             {
-                apartaments=User.apartament;
+                apartaments=User.apartament.filter(ap=>ap.favorite==true);
             }
     }
 
-   
+    dataTable.innerHTML="";
     if(dataTable.childElementCount==0){
         apartaments.forEach(rowData=>{
     
@@ -284,11 +285,16 @@ for (let User of storedData)
     function favorites(row){
         let _id=row.getAttribute('_id');
             // O sa coloram cumva butonul ala 
-            let favorit
-            let favoritesBtn=document.querySelector(".btn_new_yes");
-            favoritesBtn.style.backgroundColor="green";
+           
+            
+           
+            
+            // let favoritesBtn=document.querySelector(".btn_new_yes");
+            
+            // favoritesBtn.style.backgroundColor="green"
+            
             // document.getElementsByClassName("faforites-btn").style.color="green"
-            this.style.backgroundColor ="green"
+            // this.style.backgroundColor ="green"
         let storedData=JSON.parse(localStorage.getItem("users-1")) || [];
         const user=JSON.parse(localStorage.getItem("userSave")) || [];
         for (let User of storedData)
@@ -301,6 +307,14 @@ for (let User of storedData)
                             if(ap.id==_id)
                                 {
                                     ap.favorite= !ap.favorite;
+                                    if(ap.favorite)
+                                        {
+                                            row.style.backgroundColor='green';
+                                        }
+                                        else
+                                        {
+                                            row.style.backgroundColor='white';
+                                        }
                                 }
                         }
                     }
@@ -309,6 +323,7 @@ for (let User of storedData)
 
 
     }
+    
 
     
 // functia de vizualizare profilul utilizatorului
@@ -338,7 +353,7 @@ function myProfil() {
   
 }
 // functia de memorare date noi ale utilizatorului
-saveNew()
+
 function saveNew(){
     
     let newName=document.getElementById("new_name").value;
@@ -347,66 +362,28 @@ function saveNew(){
     let newPassword=document.getElementById("new_password").value;
     let newConfirmPassword=document.getElementById("new_confirm_password").value;
     
-    // let user=JSON.parse(localStorage.getItem(""))
-    
-    // const newData=JSON.parse(localStorage.getItem("user-1"));
-    // let results=true;
+    let users = JSON.parse(localStorage.getItem('users-1')) || [];
+    let loggedUser = JSON.parse(localStorage.getItem('userSave')) || [];
+    if(users)
+        {
+            for(let user of users)
+                {
+                    if(user.email== loggedUser.email)
+                        {
+                            user.firstName=newName;
+                            user.lestName=newLastName;
+                            user.birthDate=newBirth;
+                            user.password=newPassword;
+                            user.cpassword=newConfirmPassword;
+                        }
+                }
+                localStorage.setItem('users-1',JSON.stringify(users));
+                location.href='login.html';
+        }
 
-        
-//         let newStocare=localStorage.setItem("userSave",JSON.stringify(newData));
-//         window.location.href="home.html"
-    
-    // let logedUser=JSON.parse(localStorage.getItem("userSave")) || [];
-    let user=localStorage.getItem("userSave");
-    // console.log(stocare);
-    // if(stocare){
-    //     users_1=JSON.parse(stocare);
-    //     // console.log(users_1);
-    // }
-    // let user=JSON.parse(localStorage.getItem("users-1")) || [];
-    user.newName=firstName;
-    user.newLastName=lestName;
-    user.newBirth=birthDate;
-    user.newPassword=password;
-    user.newConfirmPassword=cpassword;
+ 
      
-    // users_1.push(user)
-    // localStorage.setItem("user-1",JSON.stringify(users_1));
-    //   localStorage.setItem("userSave",JSON.stringify(user));
-
-    
-    // if (logedUser==allUser){
-    //     console.log("salu")
-    //     console.log(logedUser)
-    //     let stocare =localStorage.getItem("users-1");
-    //     console.log(stocare);
-    //     if(stocare){
-    //         console.log("salutare")
-    //         users_1=JSON.parse(stocare);
-    //         console.log(users_1);
-    //     }
-    //     let newUser=new User(newName.value,newLastName.value,newBirth.value,newPassword.value,newConfirmPassword.value);
-    //         users_1.push(newUser);
-    //         localStorage.setItem("users-1",JSON.stringify(users_1));
-    //         console.log("salut")
-    //         userName.innerText=`Hello,${storedData.firstName } ${storedData.lestName}`;
-    // }
-    // let contact=localStorage.getItem("userSave");
-    // let contacte =new contact(newName.value,newLastName.value,newBirth.value,newPassword.value,newConfirmPassword.value);
-    // if(logedUser==allUser){
-    //     for(let user of allUser){
-    //         if (user.email===logedUser.email){
-    //             user.contact.push(contacte)
-    //         }
-    //     }
-    //     console.log(allUser);
-    //     localStorage.setItem("users-1",JSON.stringify(allUser));
-    //     newName.value="";
-    //     newLastName.value="";
-    //     newBirth.value="";
-    //     newPassword.value="";
-    //     newConfirmPassword.value="";
-    // }
+  
 
 }
 function noSave(){
