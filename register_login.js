@@ -1,3 +1,4 @@
+// preluare div / inputuri din html
 const form=document.getElementById("form");
 const email=document.getElementById("email");
 const password=document.getElementById("password");
@@ -14,27 +15,31 @@ form.addEventListener("submit",(e)=>{
     e.preventDefault();
 
     
-    // verificare localstorigi pentru memeorare date user
+    // verificare local storage pentru memeorare date user
     if(validImputs()){
+        // preluare date din local storage
         let stocare=localStorage.getItem("users-1");
+        // arata datele "stocare"
         console.log(stocare);
         if (stocare){
+            // adauga date din stocare in users_1
             users_1=JSON.parse(stocare);
             console.log(users_1)
         }
         let newUser=new User(email.value,password.value,cpassword.value,
             firstName.value,lestName.value,birthDate.value )
+            // impinge /adauga datele din newUser in user_1
         users_1.push(newUser);
             localStorage.setItem("users-1",JSON.stringify(users_1));
             console.log(email.value);
-            
+            // te trimite pe pagina login
             window.location.href="login.html"
     }
 
 
 })
 
-// obiectul creat pentru localstorigi si pentru altele
+// obiectul creat pentru local storage si pentru altele
 class User {
     constructor(email,password,cpassword,firstName,lestName,birthDate,){
         this.email=email;
