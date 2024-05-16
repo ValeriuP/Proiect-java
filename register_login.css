@@ -363,6 +363,8 @@ border-collapse: collapse;
   }
   .head-btn-login{
     margin-top: 20px;
+    display: flex;
+    flex-direction: column;
   }
   .btn-container-viewFlat{
     /* display: flex; */

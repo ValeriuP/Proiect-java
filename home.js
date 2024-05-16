@@ -468,48 +468,36 @@ for (let User of storedData){
 }
 //   functie de sortare
 function sort(){
-    // let storedData=JSON.parse(localStorage.getItem("users-1")) || [];
-    // const user=JSON.parse(localStorage.getItem("userSave")) || [];
-    // user.apartament.sort()
-    // console.log()
-    // for (let User of storedData){
-    //     if(User.email===user.email){
-    //         User.sort(function(a,b){
-    //             if(a.city<b.city){
-    //                 return -1
-    //             }
-    //             if(a.city>b.city){
-    //                 return 1
-    //             }
-    //         })
-    //     }
-    // }
-    let users = JSON.parse(localStorage.getItem('users-1')) || [];
-    let loggedUser = JSON.parse(localStorage.getItem('userSave')) || [];
-    if(users)
-        {
-            for(let user of users)
-                {
-    if(user.email== loggedUser.email){
-        console.log(users.apartament)
-    }
-}}
-    const dataTable=document.getElementById("data_table").getElementsByTagName("tbody")[0];  
-    // const rows=Array.from(dataTable.row)
-    let apart=JSON.parse(localStorage.getItem("users-1"));
+   
+
+
     
-    rows.sort((a,b)=>{
-        const numberA=parseInt(a.cells[0].textContent);
-        const numberB=parseInt(b.cells[0].textContent);
-        return numberA-numberB;
-    })
-    console.log(dataTable)
-        rows.forEach((row)=>{
-            dataTable.appendChild(row);
+//     let users = JSON.parse(localStorage.getItem('users-1')) || [];
+//     let loggedUser = JSON.parse(localStorage.getItem('userSave')) || [];
+//     if(users)
+//         {
+//             for(let user of users)
+//                 {
+//     if(user.email== loggedUser.email){
+//         console.log(users.apartament)
+//     }
+// }}
+//     const dataTable=document.getElementById("data_table").getElementsByTagName("tbody")[0];  
+//     // const rows=Array.from(dataTable.row)
+//     let apart=JSON.parse(localStorage.getItem("users-1"));
+    
+//     rows.sort((a,b)=>{
+//         const numberA=parseInt(a.cells[0].textContent);
+//         const numberB=parseInt(b.cells[0].textContent);
+//         return numberA-numberB;
+//     })
+//     console.log(dataTable)
+//         rows.forEach((row)=>{
+//             dataTable.appendChild(row);
 
        
         
-    })
+//     })
 }
 
 // toster   alerte eroare
