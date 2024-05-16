@@ -192,6 +192,8 @@ for (let User of storedData)
                 apartaments=User.apartament;
             }
     }
+    
+
     //  refres la tabel "golire"   
     dataTable.innerHTML="";
     if(dataTable.childElementCount==0){
@@ -220,7 +222,15 @@ for (let User of storedData)
     // butoane  de stergere si de favorite pe randuri
     deleteCell.innerHTML=`<button class="delet-btn" _id=${rowData.id} onclick="deleteRow(this)">Delete</button>`;
     favoritesApart.innerHTML=`<button class="favorites-btn" id="favorites_btn" _id=${rowData.id} onclick="favorites(this)">Favorites</button>`
-     })}
+    
+    let row=document.getElementById("favorites_btn")
+    if (apartaments.favorite==true){
+       row.style.backgroundColor='green'
+    }
+    else{
+        row.style.backgroundColor='white'
+    }
+    })}
     }
 
     //  functia care afiseaza ap. favorite
@@ -441,11 +451,11 @@ for (let User of storedData){
                        if(ac.id==_id){
                         ac.acYes=!ac.acYes;
                         if(ac.acYes){
-                            result= true
+                            result= false
                             
                         }
                         else{
-                           result= false
+                           result= true
                         }
                        }
                     }
@@ -453,7 +463,39 @@ for (let User of storedData){
 }
  localStorage.setItem("users-1",JSON.stringify(storedData))
 }
+//   functie de sortare
+function sort(){
+    let storedData=JSON.parse(localStorage.getItem("users-1")) || [];
+    const user=JSON.parse(localStorage.getItem("userSave")) || [];
+    user.apartament.sort()
+    console.log(sort)
+    // for (let User of storedData){
+    //     if(User.email===user.email){
+    //         User.sort(function(a,b){
+    //             if(a.city<b.city){
+    //                 return -1
+    //             }
+    //             if(a.city>b.city){
+    //                 return 1
+    //             }
+    //         })
+    //     }
+    }
+    // const dataTable=document.getElementById("data_table").getElementsByTagName("tbody")[0];  
+    // const rows=Array.from(dataTable.row)
+    
+    // rows.sort((a,b)=>{
+    //     const numberA=parseInt(a.cells[0].textContent);
+    //     const numberB=parseInt(b.cells[0].textContent);
+    //     return numberA-numberB;
+    // })
+    // console.log(dataTable)
+    //     rows.forEach((row)=>{
+    //         dataTable.appendChild(row);
 
+       
+        
+    // })
 
 
 // toster   alerte eroare

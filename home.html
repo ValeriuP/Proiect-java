@@ -31,13 +31,14 @@
 
             </div>
                 <div class="head-btn-login">
+                  <button class="btn-home" id="sort" onclick="sort()"> Sort</button>
                  <button class="btn-home" id="btn_log" onclick="logout()"> Log Out
-                  
                  </button>
                 </div>
          </div>
     </head>
     <main class="container">
+      <!-- divul unde poti adauga apartamente -->
       <div class="add-new" id="add_new_container">
         <form action="" id="form">
           <h1>Add new flat</h1>
@@ -112,7 +113,7 @@
     
       </form>
     </div>
-    
+         <!-- divul unde se afiseaza apartamentele -->
       <div class="viewFlat-container" id="view_flat_container">
           <table class="shifts-table" id="data_table">
               <thead>
@@ -134,7 +135,7 @@
               </tbody>
           </table>
       </div>
-    
+          <!-- divul unde se afiseaza datele userului salvat si poate schimba date -->
     <div class="myProfil-container" id="myProfil_container">
         
         <div class="detail-user" id="detail_user">
