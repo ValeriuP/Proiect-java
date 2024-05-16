@@ -114,8 +114,8 @@ form.addEventListener("submit",(e)=>{
     if(result){
         // generare de id dupa data
         let newId=Date.now()
-
-    let apartamente=new Apartament(newId,city.value,streedName.value,streedNr.value,areaSizi.value,acYes.value,yearBuilt.value,rentPrice.value,dateAvailabe.value);
+         const hazAc=acYes.checked?"yes":"not"
+    let apartamente=new Apartament(newId,city.value,streedName.value,streedNr.value,areaSizi.value,hazAc,yearBuilt.value,rentPrice.value,dateAvailabe.value);
     //    preluam datele din local storage
     let logedUser=JSON.parse(localStorage.getItem("userSave")) || [];
         let allUser=JSON.parse(localStorage.getItem("users-1")) || [];
@@ -123,12 +123,15 @@ form.addEventListener("submit",(e)=>{
             for (let user of allUser){
                 // verificam userul existent cu userul conectat
                 if (user.email===logedUser.email){
-               
+                    
+                    console.log(acYes)
                     // adaugam apartamente noi
                     user.apartament.push(apartamente)
 
                 }
             }
+            // console.log(acYes.checked)
+            
             // rescriem in local storage datele noi user si apartamente
             localStorage.setItem("users-1",JSON.stringify(allUser));
             
@@ -465,10 +468,10 @@ for (let User of storedData){
 }
 //   functie de sortare
 function sort(){
-    let storedData=JSON.parse(localStorage.getItem("users-1")) || [];
-    const user=JSON.parse(localStorage.getItem("userSave")) || [];
-    user.apartament.sort()
-    console.log(sort)
+    // let storedData=JSON.parse(localStorage.getItem("users-1")) || [];
+    // const user=JSON.parse(localStorage.getItem("userSave")) || [];
+    // user.apartament.sort()
+    // console.log()
     // for (let User of storedData){
     //     if(User.email===user.email){
     //         User.sort(function(a,b){
@@ -480,23 +483,34 @@ function sort(){
     //             }
     //         })
     //     }
+    // }
+    let users = JSON.parse(localStorage.getItem('users-1')) || [];
+    let loggedUser = JSON.parse(localStorage.getItem('userSave')) || [];
+    if(users)
+        {
+            for(let user of users)
+                {
+    if(user.email== loggedUser.email){
+        console.log(users.apartament)
     }
-    // const dataTable=document.getElementById("data_table").getElementsByTagName("tbody")[0];  
+}}
+    const dataTable=document.getElementById("data_table").getElementsByTagName("tbody")[0];  
     // const rows=Array.from(dataTable.row)
+    let apart=JSON.parse(localStorage.getItem("users-1"));
     
-    // rows.sort((a,b)=>{
-    //     const numberA=parseInt(a.cells[0].textContent);
-    //     const numberB=parseInt(b.cells[0].textContent);
-    //     return numberA-numberB;
-    // })
-    // console.log(dataTable)
-    //     rows.forEach((row)=>{
-    //         dataTable.appendChild(row);
+    rows.sort((a,b)=>{
+        const numberA=parseInt(a.cells[0].textContent);
+        const numberB=parseInt(b.cells[0].textContent);
+        return numberA-numberB;
+    })
+    console.log(dataTable)
+        rows.forEach((row)=>{
+            dataTable.appendChild(row);
 
        
         
-    // })
-
+    })
+}
 
 // toster   alerte eroare
 toastr.options = {
