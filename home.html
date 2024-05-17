@@ -17,12 +17,13 @@
          <div class="navbar">
             <div class="btn-container" id="btn_container">
                 <button class="btn-home" id="add_new" onclick="addNew()">Add new flat</button>
-                <button class="btn-home" id="btn_view" onclick="viewFlat()"> View Flat</button>
+                <button class="btn-home" id="btn_view"onclick="viewFlat()"> View Flat</button>
+                <button class="btn-home" id="btn_favorites" onclick="viewFavorites()">favorites</button>
             </div>
             <div class="btn-container-viewFlat" id="btn_container_viewFlat">
               <button class="btn-home" id="add_new" onclick="addNew()">Add new flat</button>
               <button class="btn-home" id="btn_see_property" onclick="viewFlat()">See property</button>
-              <button class="btn-home" id="btn_favorites" onclick="viewFavorites()">favorites</button>
+             
               
           </div>
             <div class="heloo-mesage">
@@ -30,11 +31,16 @@
 
             </div>
                 <div class="head-btn-login">
+                  <button class="btn-home" id="btn_log" onclick="logout()"> Log Out
+                  </button>
                   <button class="btn-home" id="btn_profil" onclick="myProfil()">My Profil</button>
                   <button class="btn-home" id="sort" onclick="sort()"> Sort</button>
-
-                 <button class="btn-home" id="btn_log" onclick="logout()"> Log Out
-                 </button>
+                  <!-- <select class="form-select form-select-lg mb-3" aria-label="Large select example">
+                    <option selected class="select-btn" id="sortBtn">Sort</option>
+                    <option value="1">City</option>
+                    <option value="2">Price</option>
+                    <option value="3">Area Sizi</option>
+                  </select> -->
                 </div>
          </div>
     </head>

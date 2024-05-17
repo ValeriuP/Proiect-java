@@ -468,37 +468,43 @@ for (let User of storedData){
 }
 //   functie de sortare
 function sort(){
-   
-
-
+    //   preluare date useri din local storage 
+    let storedData=JSON.parse(localStorage.getItem("users-1")) || [];
+    // preluare date user logat
+    const user=JSON.parse(localStorage.getItem("userSave")) || [];
+    for (let User of storedData)
+        {
+            // am identificat userul logat
+            if(User.email===user.email){
+                apart=User.apartament;
+                console.log(apart);
+            }
+            for(let i=0;i<e.target.lenght;i++){
+                if (e.target[i].id){
+                    
+                }
+            }
     
-//     let users = JSON.parse(localStorage.getItem('users-1')) || [];
-//     let loggedUser = JSON.parse(localStorage.getItem('userSave')) || [];
-//     if(users)
-//         {
-//             for(let user of users)
-//                 {
-//     if(user.email== loggedUser.email){
-//         console.log(users.apartament)
-//     }
-// }}
-//     const dataTable=document.getElementById("data_table").getElementsByTagName("tbody")[0];  
-//     // const rows=Array.from(dataTable.row)
-//     let apart=JSON.parse(localStorage.getItem("users-1"));
+                // let apart=JSON.parse(localStorage.getItem("users-1"));
+                // console.log(apart)
+    const dataTable=document.getElementById("data_table").getElementsByTagName("tbody")[0];  
+    // const rows=Array.from(dataTable.row)
     
-//     rows.sort((a,b)=>{
-//         const numberA=parseInt(a.cells[0].textContent);
-//         const numberB=parseInt(b.cells[0].textContent);
-//         return numberA-numberB;
-//     })
-//     console.log(dataTable)
-//         rows.forEach((row)=>{
-//             dataTable.appendChild(row);
+    
+    rows.sort((a,b)=>{
+        const numberA=parseInt(a.cells[0].textContent);
+        const numberB=parseInt(b.cells[0].textContent);
+        return numberA-numberB;
+    })
+    console.log(dataTable)
+        rows.forEach((row)=>{
+            dataTable.appendChild(row);
 
        
         
-//     })
+    })
 }
+}  
 
 // toster   alerte eroare
 toastr.options = {
