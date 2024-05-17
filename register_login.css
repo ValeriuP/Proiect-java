@@ -59,9 +59,8 @@
     flex-direction: column;
     margin-bottom: 15px;
     color: white;
-    
-    
   }
+  /* container cu inputuri streed Nr,Has Ac, rent price din add new flats*/
   .name-container{
     display: flex;
   }
@@ -75,29 +74,23 @@
     backdrop-filter: blur(3px);
     background-color: rgb(189 211 219 /25%);
     color: white;
-  
   }
   .input-group input::placeholder{
     color: white;
   }
-  
   .input-group input:focus{
     outline:0;
   }
-  /*  */
   .input-group .error{
     color:rgb(242, 18, 18);
     font: size 12px;
   }
-  
   .input-group.success input{
     border-color: green;
   }
-  
   .input-group.error input{
     border-color:rgb(206, 67, 67);
   }
-
   .actions{
     margin-top: 10px;
     display: flex;
@@ -324,15 +317,15 @@ border-collapse: collapse;
 }
 .show-detali-input{
   width: 220px;
-  height: 45px;
+  height: 40px;
   border-radius: 10px;
   font: size 15px;
   padding: 5px;
-  /* border:1px solid red ; */
   /* se face transparent */
   backdrop-filter: blur(3px);
   background-color: rgb(189 211 219 /25%);
   color: white;
+  border: 1px solid red
 }
 .favorites-btn{
   border-radius: 10px;
@@ -350,9 +343,17 @@ border-collapse: collapse;
     align-content: space-around;
     display: none;
 }
-
-
-
+.btn-new{
+background-color: blue;
+    color: white;
+    border: 2px solid green;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 5px 0px;
+    cursor: pointer;
+    font-size: 15px;
+    width: 100%;
+}
 .form-select form-select-lg mb-3{
   /* font-style:45px;
   font-variant-ligatures: ;
