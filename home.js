@@ -179,6 +179,7 @@ function viewFlat(){
     viewFlatBtn.style.display=("flex");
     addnew.style.display="none";
     profile.style.display="none";
+
     // preluam div din html
     const dataTable=document.getElementById("data_table").getElementsByTagName("tbody")[0];  
     //    preluam datele din local storage useri existenti
@@ -244,6 +245,7 @@ for (let User of storedData)
     viewFlatBtn.style.display=("flex");
     addnew.style.display="none";
     profile.style.display="none";
+
     // legatura cu tabelul di html
     const dataTable=document.getElementById("data_table").getElementsByTagName("tbody")[0];  
     // preluare date din local storage useri
@@ -367,6 +369,7 @@ function myProfil() {
     viewFlatBtn.style.display="none";
     addNewBtn.style.display="flex";
     profile.style.display="flex";
+
     //preluare date din local storage    
     let curentUser=JSON.parse(localStorage.getItem("userSave"));
     // se face legatura cu div in html
@@ -477,34 +480,59 @@ function sort(){
             // am identificat userul logat
             if(User.email===user.email){
                 apart=User.apartament;
-                console.log(apart);
+                
             }
-            for(let i=0;i<e.target.lenght;i++){
-                if (e.target[i].id){
-                    
-                }
-            }
-    
-                // let apart=JSON.parse(localStorage.getItem("users-1"));
-                // console.log(apart)
-    const dataTable=document.getElementById("data_table").getElementsByTagName("tbody")[0];  
-    // const rows=Array.from(dataTable.row)
-    
-    
-    rows.sort((a,b)=>{
-        const numberA=parseInt(a.cells[0].textContent);
-        const numberB=parseInt(b.cells[0].textContent);
-        return numberA-numberB;
-    })
-    console.log(dataTable)
-        rows.forEach((row)=>{
-            dataTable.appendChild(row);
-
+            apart.sort(function (a, b) {
+                return a.city.localeCompare(b.city) || b.price - a.price;
+            });
+            console.log(apart)
        
+    const dataTable=document.getElementById("data_table").getElementsByTagName("tbody")[0];  
+    //  refres la tabel "golire"   
+    dataTable.innerHTML="";
+    if(dataTable.childElementCount==0){
+        apart.forEach(rowData=>{
+    // construire tabel
+    const newRow=dataTable.insertRow();
+    const cityCell=newRow.insertCell(0);
+    const streedNameCell=newRow.insertCell(1);
+    const streedNrCell=newRow.insertCell(2);
+    const areaSiziCell=newRow.insertCell(3);
+    const acYesCell=newRow.insertCell(4);
+    const yearBuiltCell=newRow.insertCell(5);
+    const rentPriceCell=newRow.insertCell(6);
+    const dateAvailabeCell=newRow.insertCell(7)
+    const deleteCell=newRow.insertCell(8);
+    const favoritesApart=newRow.insertCell(9)
+    // adaugare date in tabel
+    cityCell.textContent=rowData.city;
+    streedNameCell.textContent=rowData.streedName;
+    streedNrCell.textContent=rowData.streedName;
+    areaSiziCell.textContent=rowData.areaSizi;
+    acYesCell.textContent=rowData.acYes;
+    yearBuiltCell.textContent=rowData.yearBuilt;
+    rentPriceCell.textContent=rowData.rentPrice;
+    dateAvailabeCell.textContent=rowData.dateAvailabe;
+    // butoane  de stergere si de favorite pe randuri
+    deleteCell.innerHTML=`<button class="delet-btn" _id=${rowData.id} onclick="deleteRow(this)">Delete</button>`;
+    favoritesApart.innerHTML=`<button class="favorites-btn" id="favorites_btn" _id=${rowData.id} onclick="favorites(this)">Favorites</button>`
+    
+    // let row=document.getElementById("favorites_btn")
+    // if (apartaments.favorite==true){
+    //    row.style.backgroundColor='green'
+    // }
+    // else{
+    //     row.style.backgroundColor='white'
+    // }
+    })}
+    }
+    
+    
+   
         
-    })
+   
 }
-}  
+
 
 // toster   alerte eroare
 toastr.options = {
