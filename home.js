@@ -411,11 +411,15 @@ function saveNew(){
                             user.cpassword=newConfirmPassword;
                         }
                 }
+                // verificam password sa aibe minim 8 caractere
           if(newPassword.length<8){
             result=false;
+            // toaster eroare
             return toastr["error"]("password must be atleas 8 characters!");
           } 
+        //   adaugam valoare
           let birthDateVal=newBirth.value;
+        //   verificam valorile
           if(validateBirthDate(birthDateVal)){
             result=false
         }
@@ -428,12 +432,16 @@ function saveNew(){
                 location.href='login.html';
         }
 }
+// functia de verificat varsta user
 function validateBirthDate(input){
+    // varsta introdusa
     let dob=new Date(input);
+    // data actuala
     let curentDate=new Date();
+    // calcul diferenta de varsta
     let timeDif=curentDate.getTime() -dob.getTime();
     let age=Math.floor(timeDif / (1000 * 3600 * 24 * 365.25));
-    
+    // conditie de varsta
     if (age<18){
         toastr["error"]("You must be at least 18 year")
        return true
@@ -446,12 +454,17 @@ function validateBirthDate(input){
 function noSave(){
     window.location.href="home.html"
 }
+// functia de AC
 function clima(){
+    // atribuireid
 let _id=row.getAttribute('_id');
+// preluare date local storage
 let storedData=JSON.parse(localStorage.getItem("users-1")) || [];
 const user=JSON.parse(localStorage.getItem("userSave"));
 for (let User of storedData){
+    // verificare user user logat
           if(User.email===user.email){
+            // conditi verificare atribuire AC true / false
                for (let ac of User.acYes){
                        if(ac.id==_id){
                         ac.acYes=!ac.acYes;
@@ -466,9 +479,10 @@ for (let User of storedData){
                     }
           }
 }
+// rescriere date memorare local storage
  localStorage.setItem("users-1",JSON.stringify(storedData))
 }
-//   functie de sortare
+//   functie de sortare city
 function sort(){
     //   preluare date useri din local storage 
     let storedData=JSON.parse(localStorage.getItem("users-1")) || [];
@@ -478,14 +492,18 @@ function sort(){
         {
             // am identificat userul logat
             if(User.email===user.email){
+                // alocam apartamentele user logat
                 apart=User.apartament;
             apart.sort(function (a, b) {
+                // sortam alfabetic city
                 return a.city.localeCompare(b.city) || b.price - a.price;
             
             });
+            // facem legatura cu tabelul din html
     const dataTable=document.getElementById("data_table").getElementsByTagName("tbody")[0];  
     //  refres la tabel "golire"   
     dataTable.innerHTML="";
+    // verificam daca tabelul este gol
     if(dataTable.childElementCount==0){
         apart.forEach(rowData=>{
     // construire tabel
@@ -526,6 +544,7 @@ function sortAria(){
         {
             // am identificat userul logat
             if(User.email===user.email){
+                // alocam apartamentele user logat
                 apart=User.apartament;
             apart.sort(function (a, b) {
                 return a.areaSizi.localeCompare(b.areaSizi) || b.price - a.price;
@@ -576,6 +595,7 @@ function sortPrice(){
         {
             // am identificat userul logat
             if(User.email===user.email){
+                // alocam apartamentele user logat
                 apart=User.apartament;
             apart.sort(function (a, b) {
                 return a.rentPrice.localeCompare(b.rentPrice) || b.price - a.price;
