@@ -32,7 +32,7 @@
                 <div class="head-btn-login">
                   <button class="btn-home" id="btn_log" onclick="logout()"> Log Out
                   </button>
-                  <button class="btn-home" id="btn_profil" onclick="myProfil()">My Profil</button>
+                  <button class="btn-home" id="btn_profil" onclick="myProfil()">My Profile</button>
                 </div>
                 
          </div>
@@ -124,13 +124,13 @@
               <thead>
                   <tr>
                       <th>City</th>
-                      <th>Stred Name</th>
-                      <th>Streed Nr</th>
-                      <th>Area Sizi</th>
+                      <th>Street Name</th>
+                      <th>Street Nr</th>
+                      <th>Area Size</th>
                       <th>Has Ac</th>
                       <th>Year Built</th>
                       <th>Rent Price</th>
-                      <th>Data Availabe</th>
+                      <th>Data Available</th>
                       <th>Delete</th>
                       <th>Favorite</th>
                   </tr>
@@ -145,15 +145,15 @@
         
         <div class="detail-user" id="detail_user">
           <p class="show-detail" id="show_name"></p>
-          <input type="newname" class="show-detali-input" id="new_name" placeholder="you want to change the first name ?">
+          <input type="newname" class="show-detali-input" id="new_name">
         </div>
         <div class="detail-user" >
           <p class="show-detail" id="show_last_name"></p>
-          <input type="newlastname" class="show-detali-input" id="new_last_name" placeholder="you want to change the lest name ?">
+          <input type="newlastname" class="show-detali-input" id="new_last_name">
         </div>
         <div class="detail-user">
           <p class="show-detail" id="show_email"></p>
-          
+          <!-- <input type="text" class="show-detali-input" id="new_email"> -->
         </div>
         <div class="detail-user">
           <p class="show-detail" id="show_birth"></p>
@@ -161,11 +161,7 @@
         </div>
         <div class="detail-user">
           <p class="show-detail" id="show_password"></p>
-          <input type="password" class="show-detali-input" id="new_password" placeholder="you want to change the password ?">
-        </div>
-        <div class="detail-user">
-          <p class="show-detail" id="confirm_password">Confirm the new password</p>
-          <input type="password" class="show-detali-input" id="new_confirm_password" placeholder="confirm the new password">
+          <input type="text" class="show-detali-input" id="new_password">
         </div>
         <button class="btn-new" id="btn_new_yes" onclick="saveNew()">Save</button>
         <button class="btn-new" id="btn_new_no" onclick="noSave()">No</button>

@@ -371,18 +371,39 @@ function myProfil() {
     sortDiv.style.display="none";
     //preluare date din local storage    
     let curentUser=JSON.parse(localStorage.getItem("userSave"));
+    let users = JSON.parse(localStorage.getItem('users-1')) || [];
     // se face legatura cu div in html
     let showFirstName=document.getElementById("show_name");
     let showLastName=document.getElementById("show_last_name");
-    let showemail=document.getElementById("show_email");
+    // let showEmail=document.getElementById("show_email")
     let showBirth=document.getElementById("show_birth");
     let showpassword=document.getElementById("show_password");
-    // afisarea datele user logat in html
-    showFirstName.innerText=`First Name,${curentUser.firstName}`;
-    showLastName.innerText=`Last Name,${curentUser.lestName}`;
-    showemail.innerText=`Email,${curentUser.email}`;
-    showBirth.innerText=`Birth Date,${curentUser.birthDate}`;
-    showpassword.innerText=`Password,${curentUser.password}`;
+    
+
+    // afisarea in html
+    showFirstName.innerText=`First Name`;
+    showLastName.innerText=`Last Name`;
+    // showEmail.innerText=`Email`;
+    showBirth.innerText=`Birth Date`;
+    showpassword.innerText=`Password`;
+    
+    let newName=document.getElementById("new_name");
+    let newLastName=document.getElementById("new_last_name");
+    // let newEmail=document.getElementById("new_email");
+    let newBirth=document.getElementById("new_birth");
+    let newPassword=document.getElementById("new_password");
+    
+    for (let user of users){
+   if (user.email===curentUser.email){
+    newName.value=user.firstName;
+    newLastName.value=user.lestName;
+    // newEmail.value=user.email;
+    newBirth.value=user.birthDate;
+    newPassword.value=user.password;
+    
+   }
+}
+    
 }
 // functia de memorare date noi ale utilizatorului
 function saveNew(){
@@ -391,7 +412,7 @@ function saveNew(){
     let newLastName=document.getElementById("new_last_name").value;
     let newBirth=document.getElementById("new_birth").value;
     let newPassword=document.getElementById("new_password").value;
-    let newConfirmPassword=document.getElementById("new_confirm_password").value;
+    // let newConfirmPassword=document.getElementById("new_confirm_password").value;
     // preluare date user din local storage 
     let users = JSON.parse(localStorage.getItem('users-1')) || [];
     // preluare date user logat din local storage
@@ -408,7 +429,7 @@ function saveNew(){
                             user.lestName=newLastName;
                             user.birthDate=newBirth;
                             user.password=newPassword;
-                            user.cpassword=newConfirmPassword;
+                            // user.cpassword=newConfirmPassword;
                         }
                 }
                 // verificam password sa aibe minim 8 caractere
@@ -418,12 +439,12 @@ function saveNew(){
             return toastr["error"]("password must be atleas 8 characters!");
           } 
         //   adaugam valoare
-          let birthDateVal=newBirth.value;
+          let birthDateVal=newBirth;
         //   verificam valorile
           if(validateBirthDate(birthDateVal)){
-            result=false
+            return;
         }
-        
+
         //  toastr["error"]("You must be at least 18 year!");
           
                 // rescrierea datelor noi in local storage
@@ -494,7 +515,7 @@ function sort(){
             if(User.email===user.email){
                 // alocam apartamentele user logat
                 apart=User.apartament;
-            apart.sort(function (a, b) {
+            apart.sort(function (a,b) {
                 // sortam alfabetic city
                 return a.city.localeCompare(b.city) || b.price - a.price;
             
@@ -546,9 +567,9 @@ function sortAria(){
             if(User.email===user.email){
                 // alocam apartamentele user logat
                 apart=User.apartament;
-            apart.sort(function (a, b) {
-                return a.areaSizi.localeCompare(b.areaSizi) || b.price - a.price;
-            
+            apart.sort(function (a,b,) {
+                // transformare din strring in nr si sorteaza crescator
+                 return parseInt(a.areaSizi)-parseInt(b.areaSizi);
             });
            
        
@@ -598,8 +619,9 @@ function sortPrice(){
                 // alocam apartamentele user logat
                 apart=User.apartament;
             apart.sort(function (a, b) {
-                return a.rentPrice.localeCompare(b.rentPrice) || b.price - a.price;
-            
+                // return a.rentPrice.localeCompare(b.rentPrice) || b.rentPricerice - a.rentPricerice;
+                 // transformare din strring in nr si sorteaza crescator
+                 return parseInt(a.areaSizi)-parseInt(b.areaSizi);
             });
            
        
