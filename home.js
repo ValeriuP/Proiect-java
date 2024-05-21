@@ -224,15 +224,9 @@ for (let User of storedData)
     dateAvailabeCell.textContent=rowData.dateAvailabe;
     // butoane  de stergere si de favorite pe randuri
     deleteCell.innerHTML=`<button class="delet-btn" _id=${rowData.id} onclick="deleteRow(this)">Delete</button>`;
-    favoritesApart.innerHTML=`<button class="favorites-btn" id="favorites_btn" _id=${rowData.id} onclick="favorites(this)">Favorites</button>`
+    favoritesApart.innerHTML=`<button class="favorites-btn" id="favorites_btn"  style="background-color:${rowData.favorite?"green":"white"}" _id=${rowData.id} onclick="favorites(this)">Favorites</button>`
     
-    let row=document.getElementById("favorites_btn")
-    if (apartaments.favorite==true){
-       row.style.backgroundColor='green'
-    }
-    else{
-        row.style.backgroundColor='white'
-    }
+
     })}
     }
 
@@ -412,7 +406,6 @@ function saveNew(){
     let newLastName=document.getElementById("new_last_name").value;
     let newBirth=document.getElementById("new_birth").value;
     let newPassword=document.getElementById("new_password").value;
-    // let newConfirmPassword=document.getElementById("new_confirm_password").value;
     // preluare date user din local storage 
     let users = JSON.parse(localStorage.getItem('users-1')) || [];
     // preluare date user logat din local storage
@@ -445,11 +438,11 @@ function saveNew(){
             return;
         }
 
-        //  toastr["error"]("You must be at least 18 year!");
           
                 // rescrierea datelor noi in local storage
                 localStorage.setItem('users-1',JSON.stringify(users));
                 // trimite la pagina de logare
+                confirm("Press a button!\Please confirm if you want to save or not");
                 location.href='login.html';
         }
 }
@@ -550,7 +543,7 @@ function sort(){
     dateAvailabeCell.textContent=rowData.dateAvailabe;
     // butoane  de stergere si de favorite pe randuri
     deleteCell.innerHTML=`<button class="delet-btn" _id=${rowData.id} onclick="deleteRow(this)">Delete</button>`;
-    favoritesApart.innerHTML=`<button class="favorites-btn" id="favorites_btn" _id=${rowData.id} onclick="favorites(this)">Favorites</button>`
+    favoritesApart.innerHTML=`<button class="favorites-btn" id="favorites_btn"  style="background-color:${rowData.favorite?"green":"rgb(189 211 219 /25%)"}" _id=${rowData.id} onclick="favorites(this)">Favorites</button>`
     })}
     } 
 }
@@ -567,7 +560,7 @@ function sortAria(){
             if(User.email===user.email){
                 // alocam apartamentele user logat
                 apart=User.apartament;
-            apart.sort(function (a,b,) {
+            apart.sort(function (a,b) {
                 // transformare din strring in nr si sorteaza crescator
                  return parseInt(a.areaSizi)-parseInt(b.areaSizi);
             });
@@ -601,7 +594,7 @@ function sortAria(){
     dateAvailabeCell.textContent=rowData.dateAvailabe;
     // butoane  de stergere si de favorite pe randuri
     deleteCell.innerHTML=`<button class="delet-btn" _id=${rowData.id} onclick="deleteRow(this)">Delete</button>`;
-    favoritesApart.innerHTML=`<button class="favorites-btn" id="favorites_btn" _id=${rowData.id} onclick="favorites(this)">Favorites</button>`
+    favoritesApart.innerHTML=`<button class="favorites-btn" id="favorites_btn"  style="background-color:${rowData.favorite?"green":"rgb(189 211 219 /25%)"}" _id=${rowData.id} onclick="favorites(this)">Favorites</button>`
     })}
     } 
 }
@@ -618,10 +611,9 @@ function sortPrice(){
             if(User.email===user.email){
                 // alocam apartamentele user logat
                 apart=User.apartament;
-            apart.sort(function (a, b) {
-                // return a.rentPrice.localeCompare(b.rentPrice) || b.rentPricerice - a.rentPricerice;
+            apart.sort(function (a,b) {
                  // transformare din strring in nr si sorteaza crescator
-                 return parseInt(a.areaSizi)-parseInt(b.areaSizi);
+                 return parseInt(a.rentPrice)-parseInt(b.rentPrice);
             });
            
        
@@ -653,7 +645,7 @@ function sortPrice(){
     dateAvailabeCell.textContent=rowData.dateAvailabe;
     // butoane  de stergere si de favorite pe randuri
     deleteCell.innerHTML=`<button class="delet-btn" _id=${rowData.id} onclick="deleteRow(this)">Delete</button>`;
-    favoritesApart.innerHTML=`<button class="favorites-btn" id="favorites_btn" _id=${rowData.id} onclick="favorites(this)">Favorites</button>`
+    favoritesApart.innerHTML=`<button class="favorites-btn" id="favorites_btn"  style="background-color:${rowData.favorite?"green":"rgb(189 211 219 /25%)"}" _id=${rowData.id} onclick="favorites(this)">Favorites</button>`
     })}
     } 
 }

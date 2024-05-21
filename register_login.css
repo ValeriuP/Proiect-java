@@ -4,7 +4,7 @@
     box-sizing: border-box;
   }
   body{
-    background-image:url(Backgrount2.jpg);
+    background-image:url(background_8.jpeg);
     height: 100vh;
     width: 100%;
     background-repeat: no-repeat;
@@ -30,25 +30,26 @@
     border-radius: 5px;
     padding: 10px;
     border:solid 1px rgb(75, 75, 244);
-    background-color: rgb(189 211 219 / 25%);
+    background-color: rgba(113, 124, 128, 0.591);
   }
   /* titlu */
   h1{
     text-align: center;
-    color:white;
+    color:black;
     font-size: 25px;
   }
   /* butonul register */
   #form button{
     background-color:blue;
-    color:white;
+    color:black;
     border: 2px solid green;
     border-radius: 10px;
-    padding:10px;
-    margin: 10px 0px;
+    padding:5px;
+    margin: 5px 0px;
     cursor:pointer;
     font-size:20px;
-    width:100%;
+    width:35%;
+    margin-left:30%;
   }
   /* container cu add new flat , view flat ,my profil*/
   .container{
@@ -59,7 +60,7 @@
     display:flex;
     flex-direction: column;
     margin-bottom: 15px;
-    color: white;
+    color:black;
   }
   /* container cu inputuri streed Nr,Has Ac, rent price din add new flats*/
   .name-container{
@@ -74,10 +75,10 @@
     /* se face transparent */
     backdrop-filter: blur(3px);
     background-color: rgb(189 211 219 /25%);
-    color: white;
+    color:black;
   }
   .input-group input::placeholder{
-    color: white;
+    color:black;
   }
   .input-group input:focus{
     outline:0;
@@ -182,7 +183,7 @@
       /* se face transparent */
       backdrop-filter: blur(3px);
       background-color: rgb(189 211 219 /25%);
-      color: white;
+      color:black;
     }
     
     .add-new{
@@ -194,7 +195,7 @@
       /* background-color: rgb(189 211 219 / 25%); */
     }
     .input-group-date{
-      color: white;
+      color:black;
     }
     /* butonul de la AC 207-247*/
     .switch{
@@ -255,9 +256,9 @@ border-collapse: collapse;
 th,td{
   border:3px solid black;
   width: 300px;
-  backdrop-filter: blur(3px);
-  background-color: rgb(189 211 219 /25%);
-  color: white;
+  backdrop-filter: blur(30%);
+  background-color: rgba(39, 161, 205, 0.35);
+  color:black;
 }
 /* rgb(34,193,195) */
 .btn-container-viewFlat{
@@ -310,6 +311,7 @@ border-collapse: collapse;
 /* p  afisare name /my profile */
 .show-detail{
   width:auto;
+  color: black;
 }
 /* inputuri my profile */
 .show-detali-input{
@@ -321,14 +323,16 @@ border-collapse: collapse;
   /* se face transparent */
   backdrop-filter: blur(3px);
   background-color: rgb(189 211 219 /25%);
-  color: white;
+  color:black;
   border: 1px solid red
 }
 .favorites-btn{
   border-radius: 10px;
+  background-color: rgb(189 211 219 /25%) ;
 }
 .delet-btn{
   border-radius: 10px;
+  background-color: rgb(189 211 219 /25%) ;
 }
 /* div sortare */
 .sort-div{
@@ -344,14 +348,22 @@ border-collapse: collapse;
 /* butoane salvare/no my profile */
 .btn-new{
 background-color: blue;
-    color: white;
+    color:black;
     border: 2px solid green;
     border-radius: 10px;
     padding: 5px;
     margin: 5px 0px;
     cursor: pointer;
     font-size: 15px;
-    width: 100%;
+    width: 25%;
+}
+.btn-confirm{
+  display: flex;
+  flex-direction: row;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-around;
 }
 
 @media only screen and (max-width:820px){
