@@ -1,4 +1,5 @@
 // preluare div / inputuri din html
+// declaration of constants
 const form=document.getElementById("form");
 const email=document.getElementById("email");
 const password=document.getElementById("password");
@@ -8,16 +9,20 @@ const lestName=document.getElementById("last_name");
 const birthDate=document.getElementById("birth_date");
 
 // denumirea salvari in local store
+// array declaration to save to local storage
 let users_1=[];
 
 // functia de stocare date utilizator
+// user data storage function
 form.addEventListener("submit",(e)=>{
     e.preventDefault();
 
     
-    // verificare local storage pentru memeorare date user
+    // verificare local storage pentru memeorare date user si validare input
+    // input validation function
     if(validImputs()){
         // preluare date din local storage
+        // declaration of constancy local storage
         let stocare=localStorage.getItem("users-1");
         // arata datele "stocare"
         console.log(stocare);
@@ -40,6 +45,7 @@ form.addEventListener("submit",(e)=>{
 })
 
 // obiectul creat pentru local storage si pentru altele
+// object creation
 class User {
     constructor(email,password,cpassword,firstName,lestName,birthDate,){
         this.email=email;
@@ -55,6 +61,7 @@ class User {
 
 
 // functia de validare date utilizator
+// user data validation function
 function validImputs(){
     let result=true;
     const emailVal=email.value;
@@ -109,6 +116,7 @@ function validImputs(){
     }
     return result
 }
+// date of birth validation function
 function validateBirthDate(input){
     let dob=new Date(input);
     let curentDate=new Date();
@@ -125,6 +133,7 @@ function validateBirthDate(input){
     
 
 // functia care trimite eroarea
+// the error function
 function setError(element,message){
     const inputGroup=element.parentElement;
     const errorElement= inputGroup.querySelector('.error');
@@ -134,6 +143,7 @@ function setError(element,message){
 }
 
 // functia validare email
+// email validation function
 function isValidEmail(email){
      // Split the email address into local part and domain part
     const parts=email.split('@');

@@ -12,6 +12,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 </head>
 <body>
+
   <div class="main">
     <head class="head-bara" id="head_bara">
          <div class="navbar">
@@ -38,12 +39,14 @@
          </div>
          <div class="sort-div" id="sort_div">
           <button class="btn-home" id="sort" onclick="sort()"> Sort City</button>
-          <button class="btn-home" id="sort_aria" onclick="sortAria()">Sort Aria</button>
+          <button class="btn-home" id="sort_aria" onclick="sortAria()">Sort Area</button>
           <button class="btn-home" id="sort_price" onclick="sortPrice()">Sort Price</button>
         </div>
     </head>
+    </div>
     <main class="container">
       <!-- divul unde poti adauga apartamente -->
+      <!-- add new flat -->
       <div class="add-new" id="add_new_container">
         <form action="" id="form">
           <h1>Add new flat</h1>
@@ -118,6 +121,7 @@
       </form>
     </div>
          <!-- divul unde se afiseaza apartamentele -->
+         <!-- view flat -->
       <div class="viewFlat-container" id="view_flat_container">
           <table class="shifts-table" id="data_table">
               <thead>
@@ -140,6 +144,7 @@
           </table>
       </div>
           <!-- divul unde se afiseaza datele userului salvat si poate schimba date -->
+          <!-- my profile -->
     <div class="myProfil-container" id="myProfil_container">
         
         <div class="detail-user" id="detail_user">

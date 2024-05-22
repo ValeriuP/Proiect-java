@@ -1,7 +1,10 @@
+// // preluare div / inputuri din html
+// declaration of constants
 const form=document.querySelector("form")
 const email=document.getElementById("email");
 const password = document.getElementById("password");
 // functia de verificare si validare user
+// user verification and validation function
 function validateImputs(){
     const emailVal=email.value;
     const passwordVal=password.value;
@@ -26,14 +29,8 @@ form.addEventListener("submit", (e)=>{
   let user=validateImputs()
   if(user){
     let stocareUser=localStorage.setItem("userSave",JSON.stringify(user));
-    // console.log(stocareUser);
-  
   window.location.href="home.html"
   }
-  
-    
-
-  
 })
  function setError(element,message){
     const inputGroup = element.parentElement;
